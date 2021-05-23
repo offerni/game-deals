@@ -44,6 +44,24 @@ interface APIDealGameInfo {
   thumb: string;
 }
 
+export interface APIDealsQueryParams {
+  storeId?: string;
+  pageNumber?: number;
+  pageSize?: number;
+  sortBy?: string;
+  desc?: boolean;
+  lowerPrice?: number;
+  upperPrice?: number;
+  metacritic?: number;
+  steamRating?: number;
+  steamAppID?: string;
+  title?: string;
+  exact?: boolean;
+  aaa?: boolean;
+  steamWorks?: boolean;
+  onSale?: boolean;
+  output?: string;
+}
 interface APIDealCheaperStores {
   dealID: string;
   storeID: string;
@@ -97,4 +115,19 @@ interface APIGameDeals {
   price: string;
   retailPrice: string;
   savings: string;
+}
+
+export interface APIGamesQueryParams {
+  steamAppID?: number;
+  limit?: number;
+  exact?: boolean;
+}
+
+export function buildQueryParams<T>(options: T): string {
+  let queryParams = [];
+  for (let key in options) {
+    queryParams.push(`${key}=${options[key]}`);
+  }
+
+  return queryParams.join("&");
 }

@@ -1,19 +1,25 @@
-import { APIGameLookup, APIGamesList } from "api";
+import {
+  APIGameLookup,
+  APIGamesList,
+  APIGamesQueryParams,
+  buildQueryParams,
+} from "api";
 
-// @@todo: transform options into object and dinamically build the query params
 export const getGamesByTitle = async (
   title: string,
-  options: string = ""
+  options: APIGamesQueryParams = {}
 ): Promise<APIGamesList[]> => {
   const apiUrl: string | undefined = process.env.REACT_APP_API_URL;
 
-  return await fetch(`${apiUrl}/games?title=${title}&${options}`).then(
-    (response) => {
-      if (response.ok) {
-        return response.json();
-      }
+  return await fetch(
+    `${apiUrl}/games?title=${title}&${buildQueryParams<APIGamesQueryParams>(
+      options
+    )}`
+  ).then((response) => {
+    if (response.ok) {
+      return response.json();
     }
-  );
+  });
 };
 
 export const getGameById = async (id: string): Promise<APIGameLookup> => {

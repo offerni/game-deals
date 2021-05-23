@@ -3,7 +3,7 @@ import { getDealById, getDeals } from "./domains/Deal/utils";
 import { getGameById, getGamesByTitle } from "./domains/Game/utils";
 
 function App() {
-  // getDeals().then((deals) => {
+  // getDeals({ upperPrice: 15, pageNumber: 1 }).then((deals) => {
   //   console.log(deals);
   // });
 
@@ -15,7 +15,7 @@ function App() {
   //   console.log(deal);
   // });
 
-  // getGamesByTitle("dsfgdfg").then((games) => {
+  // getGamesByTitle("valheim", { steamAppID: 892970 }).then((games) => {
   //   console.log(games);
   // });
 

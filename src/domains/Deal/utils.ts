@@ -1,8 +1,17 @@
-import { APIDealsList, APIDealLookup } from "api";
+import {
+  APIDealsList,
+  APIDealLookup,
+  buildQueryParams,
+  APIDealsQueryParams,
+} from "api";
 
-export const getDeals = async (options: string): Promise<APIDealsList[]> => {
+export const getDeals = async (
+  options: APIDealsQueryParams
+): Promise<APIDealsList[]> => {
   const apiUrl: string | undefined = process.env.REACT_APP_API_URL;
-  return await fetch(`${apiUrl}/deals?${options}`).then(
+  return await fetch(
+    `${apiUrl}/deals?${buildQueryParams<APIDealsQueryParams>(options)}`
+  ).then(
     // @@todo: add options to the query
     (response) => {
       if (response.ok) {
