@@ -44,6 +44,18 @@ interface APIDealGameInfo {
   thumb: string;
 }
 
+interface APIDealCheaperStores {
+  dealID: string;
+  storeID: string;
+  salePrice: string;
+  retailPrice: string;
+}
+
+interface APICheapestPrice {
+  price: string;
+  date: number;
+}
+
 export interface APIDealsQueryParams {
   storeId?: string;
   pageNumber?: number;
@@ -61,17 +73,6 @@ export interface APIDealsQueryParams {
   steamWorks?: boolean;
   onSale?: boolean;
   output?: string;
-}
-interface APIDealCheaperStores {
-  dealID: string;
-  storeID: string;
-  salePrice: string;
-  retailPrice: string;
-}
-
-interface APICheapestPrice {
-  price: string;
-  date: number;
 }
 
 export interface APIStore {
