@@ -23,7 +23,11 @@ function App() {
   //   console.log(game);
   // });
 
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <h1>Hello!</h1>
+    </div>
+  );
 }
 
 export default App;
