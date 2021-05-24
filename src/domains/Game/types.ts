@@ -1,8 +1,8 @@
 export interface IGameSearch {
-  gameID: string;
-  steamAppID: string;
+  gameId: string;
+  steamAppId: string;
   cheapest: number;
-  cheapestDealID: string;
+  cheapestDealId: string;
   external: string;
   internalName: string;
   thumb: string;
@@ -16,7 +16,7 @@ export interface IGameLookup {
 
 interface IGameInfo {
   title: string;
-  steamAppID: string;
+  steamAppId: string;
   thumb: string;
 }
 
@@ -26,8 +26,8 @@ interface IGameCheapestPriceEver {
 }
 
 interface IGameDeals {
-  storeID: string;
-  dealID: string;
+  storeId: string;
+  dealId: string;
   price: number;
   retailPrice: number;
   savings: number;

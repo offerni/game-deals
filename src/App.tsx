@@ -7,12 +7,12 @@ function App() {
     console.log(deals);
   });
 
-  // getStoresInfo().then((stores) => {
-  //   console.log(stores);
-  // });
-
   // getDealById("X8sebHhbc1Ga0dTkgg59WgyM506af9oNZZJLU9uSrX8%3D").then((deal) => {
   //   console.log(deal);
+  // });
+
+  // getStoresInfo().then((stores) => {
+  //   console.log(stores);
   // });
 
   // getGamesByTitle("valheim", { steamAppID: 892970 }).then((games) => {

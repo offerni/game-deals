@@ -23,10 +23,10 @@ export interface APIDealsList {
 export interface APIDealLookup {
   gameInfo: APIDealGameInfo;
   cheaperStores: APIDealCheaperStores[];
-  chapestPrice: APICheapestPrice;
+  cheapestPrice: APICheapestPrice;
 }
 
-interface APIDealGameInfo {
+export interface APIDealGameInfo {
   storeID: string;
   gameID: string;
   name: string;
@@ -44,14 +44,14 @@ interface APIDealGameInfo {
   thumb: string;
 }
 
-interface APIDealCheaperStores {
+export interface APIDealCheaperStores {
   dealID: string;
   storeID: string;
   salePrice: string;
   retailPrice: string;
 }
 
-interface APICheapestPrice {
+export interface APICheapestPrice {
   price: string;
   date: number;
 }

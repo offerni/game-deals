@@ -1,5 +1,5 @@
 export interface IStoreInfo {
-  storeID: string;
+  storeId: string;
   storeName: string;
   isActive: boolean;
   images: IStoreInfoImage;

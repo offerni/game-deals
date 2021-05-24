@@ -2,9 +2,9 @@ export interface IDeal {
   internalName: string;
   title: string;
   metacriticLink: string;
-  dealID: string;
-  storeID: string;
-  gameID: string;
+  dealId: string;
+  storeId: string;
+  gameId: string;
   salePrice: number;
   normalPrice: number;
   isOnSale: boolean;
@@ -13,7 +13,7 @@ export interface IDeal {
   steamRatingText: string;
   steamRatingPercent: number;
   steamRatingCount: number;
-  steamAppID: string;
+  steamAppId: string;
   releaseDate: number;
   lastChange: number;
   dealRating: number;
@@ -23,14 +23,14 @@ export interface IDeal {
 export interface IDealSearch {
   gameInfo: IDealGameInfo;
   cheaperStores: IDealCheaperStores[];
-  chapestPrice: IDealCheapestPrice;
+  cheapestPrice: IDealCheapestPrice;
 }
 
-interface IDealGameInfo {
-  storeID: string;
-  gameID: string;
+export interface IDealGameInfo {
+  storeId: string;
+  gameId: string;
   name: string;
-  steamAppID: string;
+  steamAppId: string;
   salePrice: number;
   retailPrice: number;
   steamRatingText: string;
@@ -44,14 +44,14 @@ interface IDealGameInfo {
   thumb: string;
 }
 
-interface IDealCheaperStores {
-  dealID: string;
-  storeID: string;
+export interface IDealCheaperStores {
+  dealId: string;
+  storeId: string;
   salePrice: number;
   retailPrice: number;
 }
 
-interface IDealCheapestPrice {
+export interface IDealCheapestPrice {
   price: number;
   date: number;
 }

@@ -3,14 +3,23 @@ import {
   APIDealLookup,
   buildQueryParams,
   APIDealsQueryParams,
+  APIDealGameInfo,
+  APIDealCheaperStores,
+  APICheapestPrice,
 } from "api";
-import { IDeal } from "./types";
+import {
+  IDeal,
+  IDealCheaperStores,
+  IDealCheapestPrice,
+  IDealGameInfo,
+  IDealSearch,
+} from "./types";
 
 export const getDeals = async (
   options: APIDealsQueryParams
 ): Promise<IDeal[]> => {
   const apiUrl: string | undefined = process.env.REACT_APP_API_URL;
-  const deals = await fetch(
+  const deals: APIDealsList[] = await fetch(
     `${apiUrl}/deals?${buildQueryParams<APIDealsQueryParams>(options)}`
   ).then((response) => {
     if (response.ok) {
@@ -21,13 +30,18 @@ export const getDeals = async (
   return convertAPIDeals(deals);
 };
 
-export const getDealById = async (id: string): Promise<APIDealLookup> => {
+export const getDealById = async (id: string): Promise<IDealSearch> => {
   const apiUrl: string | undefined = process.env.REACT_APP_API_URL;
-  return await fetch(`${apiUrl}/deals?id=${id}`).then((response) => {
-    if (response.ok) {
-      return response.json();
+  const deal: APIDealLookup = await fetch(`${apiUrl}/deals?id=${id}`).then(
+    (response) => {
+      if (response.ok) {
+        return response.json();
+      }
     }
-  });
+  );
+  console.log(deal);
+
+  return convertAPIDealSearch(deal);
 };
 
 const convertAPIDeals = (apiDeals: APIDealsList[]): IDeal[] => {
@@ -35,9 +49,9 @@ const convertAPIDeals = (apiDeals: APIDealsList[]): IDeal[] => {
     internalName: apiDeal.internalName,
     title: apiDeal.title,
     metacriticLink: apiDeal.metacriticLink,
-    dealID: apiDeal.dealID,
-    storeID: apiDeal.storeID,
-    gameID: apiDeal.gameID,
+    dealId: apiDeal.dealID,
+    storeId: apiDeal.storeID,
+    gameId: apiDeal.gameID,
     salePrice: parseFloat(apiDeal.salePrice),
     normalPrice: parseFloat(apiDeal.normalPrice),
     isOnSale: Boolean(apiDeal.isOnSale),
@@ -46,10 +60,60 @@ const convertAPIDeals = (apiDeals: APIDealsList[]): IDeal[] => {
     steamRatingText: apiDeal.steamRatingText,
     steamRatingPercent: parseFloat(apiDeal.steamRatingPercent),
     steamRatingCount: parseFloat(apiDeal.steamRatingCount),
-    steamAppID: apiDeal.steamAppID,
+    steamAppId: apiDeal.steamAppID,
     releaseDate: apiDeal.releaseDate,
     lastChange: apiDeal.lastChange,
     dealRating: parseFloat(apiDeal.dealRating),
     thumb: apiDeal.thumb,
   }));
+};
+
+const convertAPIDealSearch = (apiDealSearch: APIDealLookup): IDealSearch => {
+  return {
+    gameInfo: convertAPIDealGameInfo(apiDealSearch.gameInfo),
+    cheaperStores: convertAPIDealCheaperStores(apiDealSearch.cheaperStores),
+    cheapestPrice: convertAPIDealCheapestPrice(apiDealSearch.cheapestPrice),
+  };
+};
+
+const convertAPIDealGameInfo = (
+  apiDealGameInfo: APIDealGameInfo
+): IDealGameInfo => {
+  return {
+    storeId: apiDealGameInfo.storeID,
+    gameId: apiDealGameInfo.gameID,
+    name: apiDealGameInfo.name,
+    steamAppId: apiDealGameInfo.steamAppID,
+    salePrice: parseFloat(apiDealGameInfo.salePrice),
+    retailPrice: parseFloat(apiDealGameInfo.retailPrice),
+    steamRatingText: apiDealGameInfo.steamRatingText,
+    steamRatingPercent: parseFloat(apiDealGameInfo.steamRatingPercent),
+    steamRatingCount: parseFloat(apiDealGameInfo.steamRatingCount),
+    metacriticScore: parseFloat(apiDealGameInfo.metacriticScore),
+    metacriticLink: apiDealGameInfo.metacriticLink,
+    releaseDate: apiDealGameInfo.releaseDate,
+    publisher: apiDealGameInfo.publisher,
+    steamworks: Boolean(apiDealGameInfo.steamworks),
+    thumb: apiDealGameInfo.thumb,
+  };
+};
+
+const convertAPIDealCheaperStores = (
+  apiDealCheaperStores: APIDealCheaperStores[]
+): IDealCheaperStores[] => {
+  return apiDealCheaperStores.map((apiDealCheaperStore) => ({
+    dealId: apiDealCheaperStore.dealID,
+    storeId: apiDealCheaperStore.storeID,
+    salePrice: parseFloat(apiDealCheaperStore.salePrice),
+    retailPrice: parseFloat(apiDealCheaperStore.retailPrice),
+  }));
+};
+
+const convertAPIDealCheapestPrice = (
+  apiCheapestPrice: APICheapestPrice
+): IDealCheapestPrice => {
+  return {
+    price: parseFloat(apiCheapestPrice.price),
+    date: apiCheapestPrice.date,
+  };
 };
