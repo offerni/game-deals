@@ -57,7 +57,7 @@ export interface APICheapestPrice {
 }
 
 export interface APIDealsQueryParams {
-  storeId?: string;
+  storeID?: string;
   pageNumber?: number;
   pageSize?: number;
   sortBy?: string;

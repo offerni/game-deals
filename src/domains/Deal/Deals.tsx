@@ -7,7 +7,7 @@ const Deals = () => {
   const [deals, setDeals] = useState<IDeal[]>([]);
 
   useEffect(() => {
-    getDeals({ upperPrice: 15, pageNumber: 0 }).then((response) => {
+    getDeals({}).then((response) => {
       setDeals(response);
     });
   }, []);
@@ -17,7 +17,7 @@ const Deals = () => {
   }
 
   return (
-    <div>
+    <div className="grid grid-cols-3 gap-6 grid-rows-1 place-items-center">
       {deals.map((deal: IDeal) => {
         return <Deal deal={deal} />;
       })}
