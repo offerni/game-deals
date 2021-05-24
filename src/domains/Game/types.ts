@@ -14,18 +14,18 @@ export interface IGameLookup {
   deals: IGameDeals[];
 }
 
-interface IGameInfo {
+export interface IGameInfo {
   title: string;
   steamAppId: string;
   thumb: string;
 }
 
-interface IGameCheapestPriceEver {
+export interface IGameCheapestPriceEver {
   price: number;
   date: number;
 }
 
-interface IGameDeals {
+export interface IGameDeals {
   storeId: string;
   dealId: string;
   price: number;

@@ -104,13 +104,13 @@ export interface APIGameLookup {
   deals: APIGameDeals[];
 }
 
-interface APIGameInfo {
+export interface APIGameInfo {
   title: string;
   steamAppID: string;
   thumb: string;
 }
 
-interface APIGameDeals {
+export interface APIGameDeals {
   storeID: string;
   dealID: string;
   price: string;

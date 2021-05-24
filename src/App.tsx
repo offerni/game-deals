@@ -3,9 +3,9 @@ import { getDealById, getDeals } from "./domains/Deal/utils";
 import { getGameById, getGamesByTitle } from "./domains/Game/utils";
 
 function App() {
-  getDeals({ upperPrice: 15, pageNumber: 1 }).then((deals) => {
-    console.log(deals);
-  });
+  // getDeals({ upperPrice: 15, pageNumber: 1 }).then((deals) => {
+  //   console.log(deals);
+  // });
 
   // getDealById("X8sebHhbc1Ga0dTkgg59WgyM506af9oNZZJLU9uSrX8%3D").then((deal) => {
   //   console.log(deal);
