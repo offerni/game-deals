@@ -5,7 +5,7 @@ export interface IStoreInfo {
   images: IStoreInfoImage;
 }
 
-interface IStoreInfoImage {
+export interface IStoreInfoImage {
   banner: string;
   logo: string;
   icon: string;

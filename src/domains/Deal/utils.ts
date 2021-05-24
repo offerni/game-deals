@@ -39,7 +39,6 @@ export const getDealById = async (id: string): Promise<IDealSearch> => {
       }
     }
   );
-  console.log(deal);
 
   return convertAPIDealSearch(deal);
 };

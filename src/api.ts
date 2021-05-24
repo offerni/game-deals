@@ -82,7 +82,7 @@ export interface APIStore {
   images: APIStoreImage;
 }
 
-interface APIStoreImage {
+export interface APIStoreImage {
   banner: string;
   logo: string;
   icon: string;
