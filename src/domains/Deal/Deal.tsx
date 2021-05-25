@@ -8,7 +8,7 @@ const Deal = (props: Props) => {
   const { deal } = props;
   return (
     <>
-      <div className="p-4 border-2 border-gray-100 rounded-lg lg:w-full hover:bg-gray-100">
+      <div className="p-4 border-2 border-gray-100 rounded-lg lg:w-full hover:bg-gray-100 ">
         <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
           <img
             alt="team"
@@ -24,7 +24,7 @@ const Deal = (props: Props) => {
                 {deal.title}
               </a>
             </h2>
-            <div className="grid grid-cols-4 grid-rows-1">
+            <div className="grid grid-cols-3 grid-rows-1">
               <h3 className="text-gray-500 mb-3">${deal.normalPrice}</h3>
               {deal.salePrice > 0 && (
                 <h3 className="text-gray-500 mb-3">${deal.salePrice}</h3>

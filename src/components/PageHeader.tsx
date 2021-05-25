@@ -1,6 +1,6 @@
 const PageHeader = () => {
   return (
-    <header className="text-gray-600 body-font bg-indigo-100 mb-10">
+    <header className="text-gray-600 body-font bg-indigo-100 mb-10 sticky top-0">
       <div className="container flex flex-wrap p-5 flex-col md:flex-row items-center">
         <a
           href="#"
