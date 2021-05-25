@@ -1,6 +1,8 @@
+import SearchBar from "./SearchBar";
+
 const PageHeader = () => {
   return (
-    <header className="text-gray-600 body-font bg-indigo-100 mb-10 sticky top-0">
+    <header className="text-gray-600 body-font bg-indigo-100 mb-10 sticky top-0 z-50">
       <div className="container flex flex-wrap p-5 flex-col md:flex-row items-center">
         <a
           href="#"
@@ -28,6 +30,7 @@ const PageHeader = () => {
             Best Discounts
           </a>
         </nav>
+        <SearchBar />
       </div>
     </header>
   );
