@@ -42,7 +42,7 @@ const Deals = () => {
         }
       >
         {deals.map((deal: IDeal) => {
-          return <Deal deal={deal} />;
+          return <Deal key={deal.dealId} deal={deal} />;
         })}
       </InfiniteScroll>
     </>
