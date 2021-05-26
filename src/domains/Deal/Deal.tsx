@@ -20,6 +20,7 @@ const Deal = (props: Props) => {
               <a
                 href={`https://www.cheapshark.com/redirect?dealID=${deal.dealId}`}
                 target="_blank"
+                rel="noreferrer"
               >
                 {deal.title}
               </a>

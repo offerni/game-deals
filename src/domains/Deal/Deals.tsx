@@ -20,7 +20,8 @@ const Deals = () => {
 
   useEffect(() => {
     fetchDeals();
-  }, []);
+    // @@todo: better solution?
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!deals.length) {
     return <DealSkeletons />;

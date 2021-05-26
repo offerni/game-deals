@@ -1,5 +1,4 @@
 import Deals from "domains/Deal/Deals";
-import ScrollToTop from "./ScrollToTop";
 
 const PageContent = () => {
   return (
