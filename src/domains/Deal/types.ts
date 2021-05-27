@@ -7,6 +7,7 @@ export interface IDeal {
   gameId: string;
   salePrice: number;
   normalPrice: number;
+  discountPercentage: number;
   isOnSale: boolean;
   savings: number;
   metacriticScore: number;

@@ -53,6 +53,7 @@ const convertAPIDeals = (apiDeals: APIDealsList[]): IDeal[] => {
     gameId: apiDeal.gameID,
     salePrice: parseFloat(apiDeal.salePrice),
     normalPrice: parseFloat(apiDeal.normalPrice),
+    discountPercentage: calculateDiscountPercentage(apiDeal),
     isOnSale: Boolean(apiDeal.isOnSale),
     savings: parseFloat(apiDeal.savings),
     metacriticScore: parseFloat(apiDeal.metacriticScore),
@@ -115,4 +116,14 @@ const convertAPIDealCheapestPrice = (
     price: parseFloat(apiCheapestPrice.price),
     date: apiCheapestPrice.date,
   };
+};
+
+export const calculateDiscountPercentage = (deal: APIDealsList): number => {
+  const normalPrice: number = parseFloat(deal.normalPrice);
+  const salePrice: number = parseFloat(deal.salePrice);
+  if (salePrice <= 0) {
+    return 0;
+  }
+
+  return Math.round(((normalPrice - salePrice) / normalPrice) * 100);
 };

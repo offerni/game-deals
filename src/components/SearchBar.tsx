@@ -1,8 +1,6 @@
+import { Search } from "types";
 import { useForm, SubmitHandler } from "react-hook-form";
-
-type Search = {
-  searchParams: string;
-};
+import { getGamesByTitle } from "domains/Game/utils";
 
 const SearchBar = () => {
   const {
@@ -10,8 +8,10 @@ const SearchBar = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<Search>();
-  const onSubmit: SubmitHandler<Search> = (data) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<Search> = (data: Search) => {
+    getGamesByTitle(data.searchParams, { exact: 1 }).then((result) => {
+      console.log(result);
+    });
   };
 
   return (

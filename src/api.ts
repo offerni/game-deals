@@ -121,7 +121,7 @@ export interface APIGameDeals {
 export interface APIGamesQueryParams {
   steamAppID?: number;
   limit?: number;
-  exact?: boolean;
+  exact?: number; // @@todo: revisit this, find a way to keep it boolean but convert it when passing the params
 }
 
 export function buildQueryParams<T>(options: T): string {
