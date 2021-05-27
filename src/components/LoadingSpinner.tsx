@@ -12,7 +12,7 @@ const LoadingSpinner = () => {
         cy="12"
         r="10"
         stroke="currentColor"
-        stroke-width=""
+        strokeWidth=""
       ></circle>
       <path
         className="opacity-75"

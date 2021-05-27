@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Deal from "./Deal";
 import { IDeal } from "./types";
 import { getDeals } from "./utils";
@@ -11,17 +11,20 @@ const Deals = () => {
   const [deals, setDeals] = useState<IDeal[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(0);
 
-  const fetchDeals = async () => {
+  const fetchDeals = useCallback(async () => {
     getDeals({ pageNumber: currentPage }).then((response) => {
       setDeals([...deals, ...response]);
       setCurrentPage(currentPage + 1);
     });
-  };
+  }, [currentPage, deals]);
 
   useEffect(() => {
-    fetchDeals();
-    // @@todo: better solution?
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    console.log("hello");
+
+    if (deals.length === 0) {
+      fetchDeals();
+    }
+  }, [fetchDeals, deals]);
 
   if (!deals.length) {
     return <DealSkeletons />;
