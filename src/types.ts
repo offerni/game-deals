@@ -1,3 +1,7 @@
-export interface Search {
+export interface ISearch {
   searchParams: string;
+}
+
+export interface ISearchResult {
+  searchResults: string[];
 }

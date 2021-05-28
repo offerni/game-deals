@@ -1,21 +1,24 @@
-import { Search } from "types";
+import { ISearch } from "types";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { getGamesByTitle } from "domains/Game/utils";
+import { useHistory } from "react-router";
 
 const SearchBar = () => {
+  const history = useHistory();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Search>();
-  const onSubmit: SubmitHandler<Search> = (data: Search) => {
-    getGamesByTitle(data.searchParams, { exact: 1 }).then((result) => {
-      console.log(result);
+  } = useForm<ISearch>();
+
+  const onSearchSubmit: SubmitHandler<ISearch> = (data: ISearch) => {
+    getGamesByTitle(data.searchParams, { exact: 0 }).then((result) => {
+      history.push("/games", { searchResults: result });
     });
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSearchSubmit)}>
       <div className="relative text-gray-600 focus-within:text-gray-400 w-auto z-50">
         <input
           type="search"

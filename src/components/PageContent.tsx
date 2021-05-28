@@ -1,10 +1,19 @@
 import Deals from "domains/Deal/Deals";
+import Games from "domains/Game/Games";
+import { Switch, Route } from "react-router-dom";
 
 const PageContent = () => {
   return (
     // ref: https://tailblocks.cc/
     <div className="container m-auto">
-      <Deals />
+      <Switch>
+        <Route path="/games">
+          <Games />
+        </Route>
+        <Route path="/">
+          <Deals />
+        </Route>
+      </Switch>
     </div>
   );
 };
