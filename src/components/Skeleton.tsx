@@ -1,4 +1,4 @@
-const DealSkeleton = () => {
+const Skeleton = () => {
   return (
     <div className="border shadow border-indigo-100 rounded-md p-4 max-w-lg w-full">
       <div className="flex space-x-4 animate-pulse">
@@ -16,4 +16,4 @@ const DealSkeleton = () => {
   );
 };
 
-export default DealSkeleton;
+export default Skeleton;

@@ -1,6 +1,5 @@
 import { ISearch } from "types";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { getGamesByTitle } from "domains/Game/utils";
 import { useHistory } from "react-router";
 
 const SearchBar = () => {
@@ -11,9 +10,9 @@ const SearchBar = () => {
     formState: { errors },
   } = useForm<ISearch>();
 
-  const onSearchSubmit: SubmitHandler<ISearch> = (data: ISearch) => {
-    getGamesByTitle(data.searchParams, { exact: 0 }).then((result) => {
-      history.push("/games", { searchResults: result });
+  const onSearchSubmit: SubmitHandler<ISearch> = (search: ISearch) => {
+    history.push("/games", {
+      params: { search: search.params, exact: 0 },
     });
   };
 
@@ -25,9 +24,9 @@ const SearchBar = () => {
           className="py-2 text-sm text-gray-900 bg-indigo-50 opacity-75 rounded-md pl-3 focus:outline-none focus:bg-white focus:text-gray-900"
           placeholder="Search Game..."
           autoComplete="off"
-          {...register("searchParams", { required: true })}
+          {...register("params", { required: true })}
         />
-        {errors.searchParams && <div>This field is required</div>}
+        {errors.params && <div>This field is required</div>}
         <span className="absolute inset-y-0 right-0 flex items-center pr-1">
           <button className="p-1 focus:outline-none focus:shadow-outline">
             <svg

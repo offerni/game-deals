@@ -3,9 +3,9 @@ import Deal from "./Deal";
 import { IDeal } from "./types";
 import { getDeals } from "./utils";
 import InfiniteScroll from "react-infinite-scroll-component";
-import DealSkeletons from "./DealSkeletons";
 import LoadingSpinner from "components/LoadingSpinner";
 import ScrollToTop from "components/ScrollToTop";
+import Skeletons from "components/Skeletons";
 
 const Deals = () => {
   const [deals, setDeals] = useState<IDeal[]>([]);
@@ -19,15 +19,13 @@ const Deals = () => {
   }, [currentPage, deals]);
 
   useEffect(() => {
-    console.log("hello");
-
     if (deals.length === 0) {
       fetchDeals();
     }
   }, [fetchDeals, deals]);
 
   if (!deals.length) {
-    return <DealSkeletons />;
+    return <Skeletons />;
   }
 
   return (
@@ -44,7 +42,7 @@ const Deals = () => {
           </span>
         }
       >
-        {deals.map((deal: IDeal) => {
+        {deals.map((deal) => {
           return <Deal key={deal.dealId} deal={deal} />;
         })}
       </InfiniteScroll>

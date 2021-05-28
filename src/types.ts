@@ -1,7 +1,10 @@
+import { IGameSearch } from "domains/Game/types";
+
 export interface ISearch {
-  searchParams: string;
+  params: ISearchParams;
 }
 
-export interface ISearchResult {
-  searchResults: string[];
+export interface ISearchParams {
+  search: string;
+  exact?: number;
 }
