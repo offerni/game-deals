@@ -9,22 +9,27 @@ import { getGamesByTitle } from "./utils";
 
 const Games = () => {
   const [games, setGames] = useState<IGameSearch[]>([]);
+  const [IsPendingSearch, setIsPendingSearch] = useState<boolean>(true);
   const location = useLocation<ISearch>();
   const { state } = location;
+
   const fetchGames = useCallback(async () => {
-    // @@todo: handle direct call without search params causing undefined
-    // indexes in the callback dependencies
+    setIsPendingSearch(true);
     getGamesByTitle(state.params.search, { exact: state.params.exact }).then(
       (response) => {
         setGames(response);
+        setIsPendingSearch(false);
       }
     );
+    // @@todo: handle direct call without search params causing undefined
+    // indexes in the callback dependencies
   }, [state.params.search, state.params.exact]);
 
   useEffect(() => {
     fetchGames();
   }, [fetchGames]);
 
+  // @@todo: pretty much never getting to this point currently
   if (!location.state?.params) {
     return (
       <Redirect
@@ -35,9 +40,16 @@ const Games = () => {
     );
   }
 
-  // @@todo: handle no games found vs response promise not yet fulfilled for skeleton
-  if (!games.length) {
+  if (IsPendingSearch) {
     return <Skeletons />;
+  }
+
+  if (!games.length) {
+    return (
+      <div className="grid grid-cols-3 place-items-center">
+        <span className="col-span-3">No Games Found</span>
+      </div>
+    );
   }
 
   return (
