@@ -17,17 +17,21 @@ const Deals = (props: Props) => {
   const [currentPage, setCurrentPage] = useState<number>(0);
 
   const fetchDeals = useCallback(async () => {
-    const queryParams: APIDealsQueryParams = {
-      pageNumber: currentPage,
-      onSale: 1,
+    const queryParams = (): APIDealsQueryParams => {
+      if (!props.giveaways) {
+        return {
+          pageNumber: currentPage,
+          onSale: 1,
+          lowerPrice: 0.01,
+        };
+      }
+
+      return {
+        upperPrice: 0,
+      };
     };
 
-    // @@todo: improve this
-    if (props.giveaways) {
-      queryParams.upperPrice = 0;
-    }
-
-    getDeals(queryParams).then((response) => {
+    getDeals(queryParams()).then((response) => {
       setDeals([...deals, ...response]);
       setCurrentPage(currentPage + 1);
     });

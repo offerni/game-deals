@@ -11,7 +11,8 @@ const PageContent = () => {
           <Games />
         </Route>
         <Route path="/giveaways">
-          <Deals giveaways={true} />
+          <Deals giveaways={true} key={window.location.pathname} />{" "}
+          {/* @@todo: Shit but works, research more later! */}
         </Route>
         <Route path="/">
           <Deals />
