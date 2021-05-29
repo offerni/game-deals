@@ -11,9 +11,7 @@ const SearchBar = () => {
   } = useForm<ISearch>();
 
   const onSearchSubmit: SubmitHandler<ISearch> = (search: ISearch) => {
-    history.push("/games", {
-      params: { search: search.params, exact: 0 },
-    });
+    history.push(`/games?q=${search.params}`);
   };
 
   return (

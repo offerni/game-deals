@@ -5,6 +5,5 @@ export interface ISearch {
 }
 
 export interface ISearchParams {
-  search: string;
-  exact?: number;
+  query: string;
 }

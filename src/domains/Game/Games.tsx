@@ -1,36 +1,37 @@
 import ScrollToTop from "components/ScrollToTop";
 import Skeletons from "components/Skeletons";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Redirect, useLocation } from "react-router";
 import { ISearch } from "types";
 import Game from "./Game";
 import { IGameSearch } from "./types";
-import { getGamesByTitle } from "./utils";
+import {
+  getGamesByTitle,
+  isValidQueryParams,
+  parseGamesQueryParams,
+} from "./utils";
 
 const Games = () => {
   const [games, setGames] = useState<IGameSearch[]>([]);
-  const [IsPendingSearch, setIsPendingSearch] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const location = useLocation<ISearch>();
-  const { state } = location;
-
-  const fetchGames = useCallback(async () => {
-    setIsPendingSearch(true);
-    getGamesByTitle(state.params.search, { exact: state.params.exact }).then(
-      (response) => {
-        setGames(response);
-        setIsPendingSearch(false);
-      }
-    );
-    // @@todo: handle direct call without search params causing undefined
-    // indexes in the callback dependencies
-  }, [state.params.search, state.params.exact]);
+  const { search } = location;
 
   useEffect(() => {
-    fetchGames();
-  }, [fetchGames]);
+    const parsedQueryParams = parseGamesQueryParams(search);
 
-  // @@todo: pretty much never getting to this point currently
-  if (!location.state?.params) {
+    if (parsedQueryParams.query) {
+      setIsLoading(true);
+      getGamesByTitle(parsedQueryParams.query, { exact: 0 }).then(
+        (response) => {
+          setGames(response);
+          setIsLoading(false);
+        }
+      );
+    }
+  }, [search]);
+
+  if (!isValidQueryParams(search)) {
     return (
       <Redirect
         to={{
@@ -40,7 +41,7 @@ const Games = () => {
     );
   }
 
-  if (IsPendingSearch) {
+  if (isLoading) {
     return <Skeletons />;
   }
 

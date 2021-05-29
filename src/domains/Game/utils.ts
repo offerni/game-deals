@@ -7,6 +7,7 @@ import {
   APIGamesQueryParams,
   buildQueryParams,
 } from "api";
+import { ISearchParams } from "types";
 import {
   IGameCheapestPriceEver,
   IGameDeals,
@@ -92,4 +93,14 @@ const convertAPIGameDeals = (apiGameDeals: APIGameDeals[]): IGameDeals[] => {
     retailPrice: parseFloat(apiGameDeal.retailPrice),
     savings: parseFloat(apiGameDeal.savings),
   }));
+};
+
+export const parseGamesQueryParams = (query: string): ISearchParams => {
+  const parsedQuery = new URLSearchParams(query);
+  return { query: parsedQuery.get("q") || "" };
+};
+
+export const isValidQueryParams = (query: string): boolean => {
+  const parsedQuery = new URLSearchParams(query);
+  return parsedQuery.has("q");
 };
