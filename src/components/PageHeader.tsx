@@ -27,8 +27,8 @@ const PageHeader = () => {
           <NavLink to="/deals" className="mr-5 hover:text-gray-900">
             Top Deals
           </NavLink>
-          <NavLink to="/deals" className="mr-5 hover:text-gray-900">
-            Best Discounts
+          <NavLink to="/giveaways" className="mr-5 hover:text-gray-900">
+            Free Games
           </NavLink>
         </nav>
         <SearchBar />

@@ -6,17 +6,32 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import LoadingSpinner from "components/LoadingSpinner";
 import ScrollToTop from "components/ScrollToTop";
 import Skeletons from "components/Skeletons";
+import { APIDealsQueryParams } from "api";
 
-const Deals = () => {
+type Props = {
+  giveaways?: boolean;
+};
+
+const Deals = (props: Props) => {
   const [deals, setDeals] = useState<IDeal[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(0);
 
   const fetchDeals = useCallback(async () => {
-    getDeals({ pageNumber: currentPage }).then((response) => {
+    const queryParams: APIDealsQueryParams = {
+      pageNumber: currentPage,
+      onSale: 1,
+    };
+
+    // @@todo: improve this
+    if (props.giveaways) {
+      queryParams.upperPrice = 0;
+    }
+
+    getDeals(queryParams).then((response) => {
       setDeals([...deals, ...response]);
       setCurrentPage(currentPage + 1);
     });
-  }, [currentPage, deals]);
+  }, [currentPage, deals, props]);
 
   useEffect(() => {
     if (deals.length === 0) {

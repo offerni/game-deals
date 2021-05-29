@@ -61,24 +61,24 @@ export interface APIDealsQueryParams {
   pageNumber?: number;
   pageSize?: number;
   sortBy?: string;
-  desc?: boolean;
+  desc?: number;
   lowerPrice?: number;
   upperPrice?: number;
   metacritic?: number;
   steamRating?: number;
   steamAppID?: string;
   title?: string;
-  exact?: boolean;
-  aaa?: boolean;
-  steamWorks?: boolean;
-  onSale?: boolean;
+  exact?: number;
+  aaa?: number;
+  steamWorks?: number;
+  onSale?: number;
   output?: string;
 }
 
 export interface APIStore {
   storeID: string;
   storeName: string;
-  isActive: boolean;
+  isActive: number;
   images: APIStoreImage;
 }
 
@@ -121,7 +121,7 @@ export interface APIGameDeals {
 export interface APIGamesQueryParams {
   steamAppID?: number;
   limit?: number;
-  exact?: number; // @@todo: revisit this, find a way to keep it boolean but convert it when passing the params
+  exact?: number; // ideally a boolean but the API only expects 1 or 0
 }
 
 export function buildQueryParams<T>(options: T): string {

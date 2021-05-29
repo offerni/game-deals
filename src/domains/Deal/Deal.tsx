@@ -27,14 +27,14 @@ const Deal = (props: Props) => {
             </h2>
             <div className="grid grid-cols-3 grid-rows-1">
               <h3 className="text-gray-500 mb-3">${deal.normalPrice}</h3>
-              {deal.salePrice > 0 && (
-                <div className="grid grid-cols-2 gap-6 grid-rows-1">
-                  <h3 className="text-gray-500 mb-3">${deal.salePrice}</h3>
-                  <h3 className="text-gray-500 mb-3">
-                    ({deal.discountPercentage}%)
-                  </h3>
-                </div>
-              )}
+              <div className="grid grid-cols-2 gap-6 grid-rows-1">
+                <h3 className="text-gray-500 mb-3">
+                  {deal.salePrice !== 0 ? `$${deal.salePrice}` : "FREE"}
+                </h3>
+                <h3 className="text-gray-500 mb-3">
+                  ({deal.discountPercentage}%)
+                </h3>
+              </div>
             </div>
             <p className="mb-4">Steam Rating: {deal.steamRatingText}</p>
             <p>Store: {deal.storeId}</p>

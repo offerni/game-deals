@@ -10,6 +10,9 @@ const PageContent = () => {
         <Route path="/games">
           <Games />
         </Route>
+        <Route path="/giveaways">
+          <Deals giveaways={true} />
+        </Route>
         <Route path="/">
           <Deals />
         </Route>
