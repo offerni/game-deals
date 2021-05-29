@@ -38,7 +38,7 @@ const Deals = () => {
     <>
       <ScrollToTop />
       <InfiniteScroll
-        className="grid grid-cols-3 gap-6 grid-rows-1 place-items-center"
+        className="grid grid-cols-3 gap-6 grid-rows-1 place-items-center p-3"
         dataLength={deals.length}
         next={fetchNextDeals}
         hasMore={location.pathname !== "/giveaways"}
