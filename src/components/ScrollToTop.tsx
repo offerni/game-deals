@@ -3,7 +3,7 @@ import { scrollToTop } from "utils";
 const ScrollToTop = () => {
   return (
     // @@todo: make button sticky
-    <div className="fixed right-10">
+    <div className="fixed right-10 z-50">
       <button
         className="animate-bounce focus:outline-none"
         onClick={scrollToTop}
