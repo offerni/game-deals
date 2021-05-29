@@ -1,5 +1,4 @@
 import Deals from "domains/Deal/Deals";
-import Filters from "domains/Deal/Filters";
 import Games from "domains/Game/Games";
 import { Switch, Route } from "react-router-dom";
 import { PATHS } from "utils";

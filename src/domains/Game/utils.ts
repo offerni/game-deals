@@ -14,6 +14,7 @@ import {
   IGameLookup,
   IGameSearch,
 } from "./types";
+import { parseImageUrlForBiggerImage } from "domains/Deal/utils";
 
 export const getGamesByTitle = async (
   title: string,
@@ -54,7 +55,7 @@ const convertAPIGames = (apiGames: APIGamesList[]): IGameSearch[] => {
     cheapestDealId: apiGame.cheapestDealID,
     external: apiGame.external,
     internalName: apiGame.internalName,
-    thumb: apiGame.thumb,
+    thumb: parseImageUrlForBiggerImage(apiGame.thumb),
   }));
 };
 
@@ -72,7 +73,7 @@ const convertAPIGameInfo = (apiGameInfo: APIGameInfo) => {
   return {
     title: apiGameInfo.title,
     steamAppId: apiGameInfo.steamAppID,
-    thumb: apiGameInfo.thumb,
+    thumb: parseImageUrlForBiggerImage(apiGameInfo.thumb),
   };
 };
 

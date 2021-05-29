@@ -63,7 +63,7 @@ const convertAPIDeals = (apiDeals: APIDealsList[]): IDeal[] => {
     releaseDate: apiDeal.releaseDate,
     lastChange: apiDeal.lastChange,
     dealRating: parseFloat(apiDeal.dealRating),
-    thumb: apiDeal.thumb,
+    thumb: parseImageUrlForBiggerImage(apiDeal.thumb),
   }));
 };
 
@@ -93,7 +93,7 @@ const convertAPIDealGameInfo = (
     releaseDate: apiDealGameInfo.releaseDate,
     publisher: apiDealGameInfo.publisher,
     steamworks: Boolean(apiDealGameInfo.steamworks),
-    thumb: apiDealGameInfo.thumb,
+    thumb: parseImageUrlForBiggerImage(apiDealGameInfo.thumb),
   };
 };
 
@@ -145,5 +145,10 @@ export const builDealsQueryParams = (
   };
 };
 
-const getCurrentPage = (dealsSize: number) =>
-  dealsSize && dealsSize / PAGE_SIZE;
+const getCurrentPage = (dealsSize: number) => {
+  return dealsSize && dealsSize / PAGE_SIZE;
+};
+
+export const parseImageUrlForBiggerImage = (url: string) => {
+  return url.replace("capsule_sm_120", "header");
+};
