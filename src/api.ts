@@ -123,12 +123,3 @@ export interface APIGamesQueryParams {
   limit?: number;
   exact?: number; // ideally a boolean but the API only expects 1 or 0
 }
-
-export function buildQueryParams<T>(options: T): string {
-  let queryParams = [];
-  for (let key in options) {
-    queryParams.push(`${key}=${options[key]}`);
-  }
-
-  return queryParams.join("&");
-}

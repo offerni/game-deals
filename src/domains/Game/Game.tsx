@@ -27,10 +27,7 @@ const Game = (props: Props) => {
             </h2>
             <div className="grid grid-cols-1 grid-rows-1">
               <h3 className="text-gray-500 mb-3">Cheapest: ${game.cheapest}</h3>
-              <button
-                // href="/games"
-                className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0 focus:outline-none"
-              >
+              <button className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0 focus:outline-none">
                 More Details
                 <svg
                   className="w-4 h-4 ml-2"

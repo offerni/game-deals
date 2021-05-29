@@ -3,6 +3,7 @@ import Skeletons from "components/Skeletons";
 import { useEffect, useState } from "react";
 import { Redirect, useLocation } from "react-router";
 import { ISearch } from "types";
+import { PATHS } from "utils";
 import Game from "./Game";
 import { IGameSearch } from "./types";
 import {
@@ -35,7 +36,7 @@ const Games = () => {
     return (
       <Redirect
         to={{
-          pathname: "/deals",
+          pathname: PATHS.deals,
         }}
       />
     );

@@ -1,3 +1,5 @@
+import { ISearchParams } from "types";
+import { buildQueryParams } from "utils";
 import {
   APICheapestPrice,
   APIGameDeals,
@@ -5,9 +7,7 @@ import {
   APIGameLookup,
   APIGamesList,
   APIGamesQueryParams,
-  buildQueryParams,
 } from "api";
-import { ISearchParams } from "types";
 import {
   IGameCheapestPriceEver,
   IGameDeals,

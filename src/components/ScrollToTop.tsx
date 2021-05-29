@@ -1,7 +1,6 @@
+import { scrollToTop } from "utils";
+
 const ScrollToTop = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
   return (
     // @@todo: make button sticky
     <div className="fixed right-10">

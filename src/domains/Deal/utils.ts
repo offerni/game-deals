@@ -1,7 +1,7 @@
+import { buildQueryParams, PAGE_SIZE, PATHS } from "utils";
 import {
   APIDealsList,
   APIDealLookup,
-  buildQueryParams,
   APIDealsQueryParams,
   APIDealGameInfo,
   APIDealCheaperStores,
@@ -126,3 +126,24 @@ export const calculateDiscountPercentage = (deal: APIDealsList): number => {
 
   return Math.round(((normalPrice - salePrice) / normalPrice) * 100);
 };
+
+export const builDealsQueryParams = (
+  pathName: string,
+  dealsSize: number = 0
+): APIDealsQueryParams => {
+  if (pathName === PATHS.free) {
+    return {
+      upperPrice: 0,
+    };
+  }
+
+  return {
+    pageNumber: getCurrentPage(dealsSize),
+    onSale: 1,
+    lowerPrice: 0.01,
+    ...(pathName === PATHS.recent ? { sortBy: "recent" } : {}),
+  };
+};
+
+const getCurrentPage = (dealsSize: number) =>
+  dealsSize && dealsSize / PAGE_SIZE;

@@ -1,51 +1,38 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Deal from "./Deal";
 import { IDeal } from "./types";
-import { getDeals } from "./utils";
+import { builDealsQueryParams, getDeals } from "./utils";
 import InfiniteScroll from "react-infinite-scroll-component";
 import LoadingSpinner from "components/LoadingSpinner";
 import ScrollToTop from "components/ScrollToTop";
 import Skeletons from "components/Skeletons";
-import { APIDealsQueryParams } from "api";
+import { useLocation } from "react-router";
+import { scrollToTop } from "utils";
 
-type Props = {
-  giveaways?: boolean;
-};
-
-const Deals = (props: Props) => {
+const Deals = () => {
   const [deals, setDeals] = useState<IDeal[]>([]);
-  const [currentPage, setCurrentPage] = useState<number>(0);
-
-  const fetchDeals = useCallback(async () => {
-    const queryParams = (): APIDealsQueryParams => {
-      if (!props.giveaways) {
-        return {
-          pageNumber: currentPage,
-          onSale: 1,
-          lowerPrice: 0.01,
-        };
-      }
-
-      return {
-        upperPrice: 0,
-      };
-    };
-
-    getDeals(queryParams()).then((response) => {
-      setDeals([...deals, ...response]);
-      setCurrentPage(currentPage + 1);
-    });
-  }, [currentPage, deals, props]);
+  const location = useLocation();
 
   useEffect(() => {
-    if (deals.length === 0) {
-      fetchDeals();
-    }
-  }, [fetchDeals, deals]);
+    scrollToTop();
+    setDeals([]);
+
+    getDeals(builDealsQueryParams(location.pathname)).then((response) => {
+      setDeals(response);
+    });
+  }, [location.pathname]);
 
   if (!deals.length) {
     return <Skeletons />;
   }
+
+  const fetchNextDeals = () => {
+    getDeals(builDealsQueryParams(location.pathname, deals.length)).then(
+      (response) => {
+        setDeals((currentDeals) => [...currentDeals, ...response]);
+      }
+    );
+  };
 
   return (
     <>
@@ -53,8 +40,8 @@ const Deals = (props: Props) => {
       <InfiniteScroll
         className="grid grid-cols-3 gap-6 grid-rows-1 place-items-center"
         dataLength={deals.length}
-        next={fetchDeals}
-        hasMore={true}
+        next={fetchNextDeals}
+        hasMore={location.pathname !== "/giveaways"}
         loader={
           <span className="col-span-3">
             <LoadingSpinner />
