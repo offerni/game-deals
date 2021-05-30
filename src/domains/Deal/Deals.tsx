@@ -12,7 +12,6 @@ import { scrollToTop } from "utils";
 const Deals = () => {
   const [deals, setDeals] = useState<IDeal[]>([]);
   const location = useLocation();
-
   useEffect(() => {
     scrollToTop();
     setDeals([]);
@@ -38,7 +37,7 @@ const Deals = () => {
     <>
       <ScrollToTop />
       <InfiniteScroll
-        className="grid grid-cols-3 gap-6 grid-rows-1 place-items-center p-3"
+        className="grid xl:grid-cols-3 lg:grid-cols-2 gap-6 grid-rows-1 place-items-center p-3"
         dataLength={deals.length}
         next={fetchNextDeals}
         hasMore={location.pathname !== "/giveaways"}

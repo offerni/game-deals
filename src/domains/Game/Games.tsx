@@ -57,7 +57,7 @@ const Games = () => {
   return (
     <>
       <ScrollToTop />
-      <div className="grid grid-cols-3 gap-6 grid-rows-1 place-items-center p-3">
+      <div className="grid grid-cols-3 xl:grid-cols-3 lg:grid-cols-2 gap-6 grid-rows-1 place-items-center p-3">
         {games.map((game) => {
           return <Game key={game.gameId} game={game} />;
         })}

@@ -58,6 +58,7 @@ const Deal = (props: Props) => {
               {deal.metacriticScore > 0 && (
                 <a
                   target="_blank"
+                  rel="noreferrer"
                   href={`${metacriticUrl}${deal.metacriticLink}`}
                   className="text-indigo-500"
                 >
@@ -76,7 +77,7 @@ const Deal = (props: Props) => {
                 src={`${imgUrl}/${deal.storeInfo.images.logo}`}
               />
               <ReactTooltip id={deal.dealId} effect="float" />
-              <MoreDetailsButton />
+              <MoreDetailsButton originId={deal.dealId} />
             </div>
           </div>
         </div>

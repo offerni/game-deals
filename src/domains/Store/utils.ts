@@ -1,5 +1,5 @@
 import { APIStore, APIStoreImage } from "api";
-import { IStoreInfo, IStoreInfoImage } from "./types";
+import { IStoreInfo, IStoreInfoImage, IStoreInfoMap } from "./types";
 
 export const getStoresInfo = async (): Promise<IStoreInfo[]> => {
   const apiUrl: string | undefined = process.env.REACT_APP_API_URL;
@@ -16,7 +16,7 @@ const convertAPIStore = (apiStores: APIStore[]): IStoreInfo[] => {
   return apiStores.map((apiStore) => ({
     storeId: apiStore.storeID,
     storeName: apiStore.storeName,
-    isActive: Boolean(apiStore.isActive),
+    isActive: apiStore.isActive,
     images: convertAPIStoreImage(apiStore.images),
   }));
 };
@@ -38,7 +38,7 @@ export const getStoreLogo = (storeID: string) => {
   return STORES[storeID];
 };
 
-const STORES: any = {
+const STORES: IStoreInfoMap = {
   "1": {
     storeName: "Steam",
     isActive: 1,
