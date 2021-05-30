@@ -1,9 +1,11 @@
+import { IStoreInfo } from "domains/Store/types";
+
 export interface IDeal {
   internalName: string;
   title: string;
   metacriticLink: string;
   dealId: string;
-  storeId: string;
+  storeInfo: IStoreInfo;
   gameId: string;
   salePrice: number;
   normalPrice: number;
@@ -27,7 +29,7 @@ export interface IDealSearch {
 }
 
 export interface IDealGameInfo {
-  storeId: string;
+  storeInfo: IStoreInfo;
   gameId: string;
   name: string;
   steamAppId: string;
@@ -46,7 +48,7 @@ export interface IDealGameInfo {
 
 export interface IDealCheaperStores {
   dealId: string;
-  storeId: string;
+  storeInfo: IStoreInfo;
   salePrice: number;
   retailPrice: number;
 }

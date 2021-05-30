@@ -16,7 +16,11 @@ const Game = (props: Props) => {
             rel="noreferrer"
             className="flex-shrink-0"
           >
-            <img alt="team" className="rounded-lg w-48 h-48" src={game.thumb} />
+            <img
+              alt={game.external}
+              className="rounded-lg w-48 h-48"
+              src={game.thumb}
+            />
           </a>
           <div className="flex-grow sm:pl-8">
             <h2 className="title-font font-medium text-lg text-gray-900 font-bold">

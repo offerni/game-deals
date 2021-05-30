@@ -15,6 +15,7 @@ import {
   IGameSearch,
 } from "./types";
 import { parseImageUrlForBiggerImage } from "domains/Deal/utils";
+import { getStoreLogo } from "domains/Store/utils";
 
 export const getGamesByTitle = async (
   title: string,
@@ -88,7 +89,7 @@ const convertAPIGameCheapestPriceEver = (
 
 const convertAPIGameDeals = (apiGameDeals: APIGameDeals[]): IGameDeals[] => {
   return apiGameDeals.map((apiGameDeal) => ({
-    storeId: apiGameDeal.storeID,
+    storeInfo: getStoreLogo(apiGameDeal.storeID),
     dealId: apiGameDeal.dealID,
     price: parseFloat(apiGameDeal.price),
     retailPrice: parseFloat(apiGameDeal.retailPrice),

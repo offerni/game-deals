@@ -6,6 +6,8 @@ type Props = {
 
 const Deal = (props: Props) => {
   const { deal } = props;
+  const imgUrl: string | undefined = process.env.REACT_APP_IMAGE_URL;
+
   return (
     <>
       <div className="p-4 border-2 border-gray-100 rounded-lg lg:w-full transition duration-100 ease-in-out hover:bg-gray-100 transform hover:-translate-w-1 hover:scale-110">
@@ -16,7 +18,11 @@ const Deal = (props: Props) => {
             rel="noreferrer"
             className="flex-shrink-0"
           >
-            <img alt="team" className="rounded-lg w-48 h-48" src={deal.thumb} />
+            <img
+              alt={deal.title}
+              className="rounded-lg w-48 h-48"
+              src={deal.thumb}
+            />
           </a>
           <div className="flex-grow sm:pl-8">
             <h2 className="title-font font-medium text-lg text-gray-900 font-bold">
@@ -40,7 +46,12 @@ const Deal = (props: Props) => {
               </div>
             </div>
             <p className="mb-4">Steam Rating: {deal.steamRatingText}</p>
-            <p>Store: {deal.storeId}</p>
+            <img
+              alt={`${deal.storeInfo.storeName}`}
+              title={`${deal.storeInfo.storeName}`}
+              className="rounded-lg w-8 h-8"
+              src={`${imgUrl}/${deal.storeInfo.images.logo}`}
+            />
           </div>
         </div>
       </div>

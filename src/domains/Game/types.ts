@@ -1,3 +1,5 @@
+import { IStoreInfo } from "domains/Store/types";
+
 export interface IGameSearch {
   gameId: string;
   steamAppId: string;
@@ -26,7 +28,7 @@ export interface IGameCheapestPriceEver {
 }
 
 export interface IGameDeals {
-  storeId: string;
+  storeInfo: IStoreInfo;
   dealId: string;
   price: number;
   retailPrice: number;

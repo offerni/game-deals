@@ -14,6 +14,7 @@ import {
   IDealGameInfo,
   IDealSearch,
 } from "./types";
+import { getStoreLogo } from "domains/Store/utils";
 
 export const getDeals = async (
   options: APIDealsQueryParams
@@ -49,7 +50,7 @@ const convertAPIDeals = (apiDeals: APIDealsList[]): IDeal[] => {
     title: apiDeal.title,
     metacriticLink: apiDeal.metacriticLink,
     dealId: apiDeal.dealID,
-    storeId: apiDeal.storeID,
+    storeInfo: getStoreLogo(apiDeal.storeID),
     gameId: apiDeal.gameID,
     salePrice: parseFloat(apiDeal.salePrice),
     normalPrice: parseFloat(apiDeal.normalPrice),
@@ -79,7 +80,7 @@ const convertAPIDealGameInfo = (
   apiDealGameInfo: APIDealGameInfo
 ): IDealGameInfo => {
   return {
-    storeId: apiDealGameInfo.storeID,
+    storeInfo: getStoreLogo(apiDealGameInfo.storeID),
     gameId: apiDealGameInfo.gameID,
     name: apiDealGameInfo.name,
     steamAppId: apiDealGameInfo.steamAppID,
@@ -102,7 +103,7 @@ const convertAPIDealCheaperStores = (
 ): IDealCheaperStores[] => {
   return apiDealCheaperStores.map((apiDealCheaperStore) => ({
     dealId: apiDealCheaperStore.dealID,
-    storeId: apiDealCheaperStore.storeID,
+    storeInfo: getStoreLogo(apiDealCheaperStore.storeID),
     salePrice: parseFloat(apiDealCheaperStore.salePrice),
     retailPrice: parseFloat(apiDealCheaperStore.retailPrice),
   }));
