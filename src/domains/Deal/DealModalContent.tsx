@@ -1,6 +1,10 @@
 import { Dialog } from "@headlessui/react";
 
-export const DealModalContent = () => {
+type Props = {
+  dealId: string | undefined;
+};
+
+export const DealModalContent = (props: Props) => {
   return (
     <>
       <Dialog.Title

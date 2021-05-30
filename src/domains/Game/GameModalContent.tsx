@@ -1,6 +1,10 @@
 import { Dialog } from "@headlessui/react";
 
-export const GameModalContent = () => {
+type Props = {
+  gameId: string | undefined;
+};
+
+export const GameModalContent = (props: Props) => {
   return (
     <>
       <Dialog.Title
