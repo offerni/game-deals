@@ -1,4 +1,5 @@
 import MoreDetailsButton from "components/MoreDetailsButton";
+import ReactTooltip from "react-tooltip";
 import { IDeal } from "./types";
 
 type Props = {
@@ -48,11 +49,15 @@ const Deal = (props: Props) => {
             </div>
             <p className="mb-4">Steam Rating: {deal.steamRatingText}</p>
             <img
-              alt={`${deal.storeInfo.storeName}`}
-              title={`${deal.storeInfo.storeName}`}
               className="rounded-lg w-8 h-8"
+              data-for={deal.dealId}
+              data-tip={`${deal.storeInfo.storeName}`}
+              data-place="top"
+              data-offset="{'top': 30, 'left': 20}"
+              alt={`Store: ${deal.storeInfo.storeName}`}
               src={`${imgUrl}/${deal.storeInfo.images.logo}`}
             />
+            <ReactTooltip id={deal.dealId} effect="float" />
             <MoreDetailsButton />
           </div>
         </div>
