@@ -1,3 +1,4 @@
+import MoreDetailsButton from "components/MoreDetailsButton";
 import { IGameSearch } from "./types";
 
 type Props = {
@@ -34,21 +35,7 @@ const Game = (props: Props) => {
             </h2>
             <div className="grid grid-cols-1 grid-rows-1">
               <h3 className="text-gray-500 mb-3">Cheapest: ${game.cheapest}</h3>
-              <button className="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0 focus:outline-none">
-                More Details
-                <svg
-                  className="w-4 h-4 ml-2"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M5 12h14"></path>
-                  <path d="M12 5l7 7-7 7"></path>
-                </svg>
-              </button>
+              <MoreDetailsButton />
             </div>
           </div>
         </div>

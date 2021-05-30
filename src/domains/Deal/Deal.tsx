@@ -1,3 +1,4 @@
+import MoreDetailsButton from "components/MoreDetailsButton";
 import { IDeal } from "./types";
 
 type Props = {
@@ -52,6 +53,7 @@ const Deal = (props: Props) => {
               className="rounded-lg w-8 h-8"
               src={`${imgUrl}/${deal.storeInfo.images.logo}`}
             />
+            <MoreDetailsButton />
           </div>
         </div>
       </div>
