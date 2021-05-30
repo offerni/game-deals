@@ -8,7 +8,12 @@ export const modalReducer = (
 ) => {
   switch (action.type) {
     case "open":
-      return { ...state, open: true, originId: action.originId };
+      return {
+        ...state,
+        open: true,
+        originId: action.originId,
+        contentType: action.contentType,
+      };
     case "close":
       return { ...state, open: false };
     default:

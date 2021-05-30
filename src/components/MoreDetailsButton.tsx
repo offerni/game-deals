@@ -1,14 +1,20 @@
 import { useContext } from "react";
+import { IModalContent } from "types";
 import { ModalContext } from "./ModalContext";
 
 type Props = {
   originId: string;
+  contentType: IModalContent;
 };
 
 const MoreDetailsButton = (props: Props) => {
   const dispatch = useContext(ModalContext);
   const handleOnClick = () => {
-    dispatch({ type: "open", originId: props.originId });
+    dispatch({
+      type: "open",
+      originId: props.originId,
+      contentType: props.contentType,
+    });
   };
   return (
     <button

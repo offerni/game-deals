@@ -35,7 +35,10 @@ const Game = (props: Props) => {
             </h2>
             <div className="grid grid-cols-1 grid-rows-1">
               <h3 className="text-gray-500 mb-3">Cheapest: ${game.cheapest}</h3>
-              <MoreDetailsButton originId={game.gameId} />
+              <MoreDetailsButton
+                originId={game.gameId}
+                contentType={{ game: true }}
+              />
             </div>
           </div>
         </div>

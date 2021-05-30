@@ -77,7 +77,10 @@ const Deal = (props: Props) => {
                 src={`${imgUrl}/${deal.storeInfo.images.logo}`}
               />
               <ReactTooltip id={deal.dealId} effect="float" />
-              <MoreDetailsButton originId={deal.dealId} />
+              <MoreDetailsButton
+                originId={deal.dealId}
+                contentType={{ deal: true }}
+              />
             </div>
           </div>
         </div>
