@@ -9,6 +9,8 @@ type Props = {
 const Deal = (props: Props) => {
   const { deal } = props;
   const imgUrl: string | undefined = process.env.REACT_APP_IMAGE_URL;
+  const metacriticUrl: string | undefined =
+    process.env.REACT_APP_METACRITIC_URL;
 
   return (
     <>
@@ -47,18 +49,35 @@ const Deal = (props: Props) => {
                 </h3>
               </div>
             </div>
-            <p className="mb-4">Steam Rating: {deal.steamRatingText}</p>
-            <img
-              className="rounded-lg w-8 h-8"
-              data-for={deal.dealId}
-              data-tip={`${deal.storeInfo.storeName}`}
-              data-place="top"
-              data-offset="{'top': 30, 'left': 20}"
-              alt={`Store: ${deal.storeInfo.storeName}`}
-              src={`${imgUrl}/${deal.storeInfo.images.logo}`}
-            />
-            <ReactTooltip id={deal.dealId} effect="float" />
-            <MoreDetailsButton />
+            <div>
+              {deal.steamRatingText && (
+                <p>
+                  Steam Rating: <span>{deal.steamRatingText}</span>
+                </p>
+              )}
+              {deal.metacriticScore > 0 && (
+                <a
+                  target="_blank"
+                  href={`${metacriticUrl}${deal.metacriticLink}`}
+                  className="text-indigo-500"
+                >
+                  <p>Metacritic Score: {deal.metacriticScore}</p>
+                </a>
+              )}
+            </div>
+            <div className="align-bottom mt-4">
+              <img
+                className="rounded-lg w-8 h-8"
+                data-for={deal.dealId}
+                data-tip={`${deal.storeInfo.storeName}`}
+                data-place="top"
+                data-offset="{'top': 30, 'left': 20}"
+                alt={`Store: ${deal.storeInfo.storeName}`}
+                src={`${imgUrl}/${deal.storeInfo.images.logo}`}
+              />
+              <ReactTooltip id={deal.dealId} effect="float" />
+              <MoreDetailsButton />
+            </div>
           </div>
         </div>
       </div>
