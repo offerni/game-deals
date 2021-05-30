@@ -14,12 +14,9 @@ const Deal = (props: Props) => {
             href={`https://www.cheapshark.com/redirect?dealID=${deal.dealId}`}
             target="_blank"
             rel="noreferrer"
+            className="flex-shrink-0"
           >
-            <img
-              alt="team"
-              className="flex-shrink-0 rounded-lg w-48 h-48"
-              src={deal.thumb}
-            />
+            <img alt="team" className="rounded-lg w-48 h-48" src={deal.thumb} />
           </a>
           <div className="flex-grow sm:pl-8">
             <h2 className="title-font font-medium text-lg text-gray-900 font-bold">
