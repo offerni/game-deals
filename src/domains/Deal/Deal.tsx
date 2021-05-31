@@ -56,14 +56,16 @@ const Deal = (props: Props) => {
                 </p>
               )}
               {deal.metacriticScore > 0 && (
-                <a
-                  target="_blank"
-                  rel="noreferrer"
-                  href={`${metacriticUrl}${deal.metacriticLink}`}
-                  className="text-indigo-500"
-                >
-                  <p>Metacritic Score: {deal.metacriticScore}</p>
-                </a>
+                <p>
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href={`${metacriticUrl}${deal.metacriticLink}`}
+                    className="text-indigo-500"
+                  >
+                    Metacritic Score: {deal.metacriticScore}
+                  </a>
+                </p>
               )}
             </div>
             <div className="align-bottom mt-4">
