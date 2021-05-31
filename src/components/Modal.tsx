@@ -16,7 +16,7 @@ export const Modal = (props: Props) => {
       <Dialog
         as="div"
         static
-        className="fixed z-10 inset-0 overflow-y-auto"
+        className="fixed z-50 inset-0 overflow-y-auto"
         open={props.state.open}
         onClose={() => dispatch({ type: "close" })}
       >
