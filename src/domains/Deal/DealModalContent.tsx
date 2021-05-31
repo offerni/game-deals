@@ -1,6 +1,8 @@
 import { Dialog } from "@headlessui/react";
 import LoadingSpinner from "components/LoadingSpinner";
 import { useEffect, useState } from "react";
+import { IReleaseDate } from "types";
+import { convertDateTimestamp } from "utils";
 import { IDealSearch } from "./types";
 import { getDealById } from "./utils";
 
@@ -10,13 +12,15 @@ type Props = {
 
 export const DealModalContent = (props: Props) => {
   const [deal, setDeal] = useState<IDealSearch>();
+  const [releaseDate, setReleaseDate] = useState<IReleaseDate>();
   useEffect(() => {
     if (props.dealId) {
       getDealById(props.dealId).then((response) => {
         setDeal(response);
+        setReleaseDate(convertDateTimestamp(response.gameInfo.releaseDate));
       });
     }
-  }, [props.dealId]);
+  }, [props.dealId, setReleaseDate]);
 
   if (!deal?.gameInfo) {
     return (
@@ -46,7 +50,7 @@ export const DealModalContent = (props: Props) => {
         <span>{deal.gameInfo.publisher}</span>
         <h3 className="font-medium">Metacritic score:</h3>
         <span className="flex">{deal.gameInfo.metacriticScore}</span>
-        <h3 className="font-medium">Steam rating text:</h3>
+        <h3 className="font-medium">Steam rating:</h3>
         <span>{deal.gameInfo.steamRatingText}</span>
         <h3 className="font-medium">Steam rating percent:</h3>
         <span>{deal.gameInfo.steamRatingPercent}%</span>
@@ -55,7 +59,9 @@ export const DealModalContent = (props: Props) => {
         <h3 className="font-medium">From steamworks:</h3>
         <span> {deal.gameInfo.steamworks ? "Yes" : "No"}</span>
         <h3 className="font-medium">Release date:</h3>
-        <span>{deal.gameInfo.releaseDate}</span>
+        <span>{`${releaseDate?.dateString} ${
+          releaseDate?.ageString && `(${releaseDate.ageString})`
+        }`}</span>
       </div>
     </>
   );

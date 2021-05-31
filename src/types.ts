@@ -24,3 +24,8 @@ export interface IModalContent {
   deal?: boolean;
   game?: boolean;
 }
+
+export interface IReleaseDate {
+  dateString: string;
+  ageString: string;
+}
