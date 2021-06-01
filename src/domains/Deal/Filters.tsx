@@ -23,7 +23,7 @@ export const Filters = () => {
 
   return (
     <>
-      <div className="grid grid-cols-12 mb-3 mt-0 text-gray-600 body-font sticky top-20 z-49 ml-10">
+      <div className="grid grid-cols-12 mb-3 mt-0 text-gray-600 body-font sticky top-20 z-50 ml-10">
         <button
           onClick={handleClick}
           className={`rounded-b-lg ${
@@ -37,7 +37,7 @@ export const Filters = () => {
       </div>
       {filterClicked && (
         <form
-          className="justify-center ml-8 mr-8 mb-8"
+          className="justify-center ml-8 mr-8 mb-8 sticky top-20 z-50 bg-white"
           onChange={handleOnChange}
         >
           <div className="border grid grid-cols-10 p-4">
