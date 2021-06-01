@@ -8,29 +8,29 @@ import ScrollToTop from "components/ScrollToTop";
 import Skeletons from "components/Skeletons";
 import { useLocation } from "react-router";
 import { scrollToTop } from "utils";
+import { IDealsLocation } from "types";
 
 const Deals = () => {
   const [deals, setDeals] = useState<IDeal[]>([]);
-  const location = useLocation();
+  const location: IDealsLocation = useLocation();
+
   useEffect(() => {
     scrollToTop();
     setDeals([]);
 
-    getDeals(builDealsQueryParams(location.pathname)).then((response) => {
+    getDeals(builDealsQueryParams(location)).then((response) => {
       setDeals(response);
     });
-  }, [location.pathname]);
+  }, [location]);
 
   if (!deals.length) {
     return <Skeletons />;
   }
 
   const fetchNextDeals = () => {
-    getDeals(builDealsQueryParams(location.pathname, deals.length)).then(
-      (response) => {
-        setDeals((currentDeals) => [...currentDeals, ...response]);
-      }
-    );
+    getDeals(builDealsQueryParams(location, deals.length)).then((response) => {
+      setDeals((currentDeals) => [...currentDeals, ...response]);
+    });
   };
 
   return (

@@ -15,6 +15,7 @@ import {
   IDealSearch,
 } from "./types";
 import { getStoreLogo } from "domains/Store/utils";
+import { IDealsLocation } from "types";
 
 export const getDeals = async (
   options: APIDealsQueryParams
@@ -129,21 +130,30 @@ export const calculateDiscountPercentage = (deal: APIDealsList): number => {
 };
 
 export const builDealsQueryParams = (
-  pathName: string,
+  location: IDealsLocation,
   dealsSize: number = 0
 ): APIDealsQueryParams => {
-  if (pathName === PATHS.free) {
+  console.log(location.pathname);
+
+  if (location.pathname === PATHS.free) {
     return {
       upperPrice: 0,
     };
   }
 
-  return {
+  const queryParams = {
     pageNumber: getCurrentPage(dealsSize),
     onSale: 1,
     lowerPrice: 0.01,
-    ...(pathName === PATHS.recent ? { sortBy: "recent" } : {}),
+    ...(location.pathname === PATHS.recent ? { sortBy: "recent" } : {}),
   };
+
+  if (location.state?.storeIds.length) {
+    const storeIds = location.state.storeIds.join(",");
+    return { ...queryParams, storeID: storeIds };
+  }
+
+  return queryParams;
 };
 
 const getCurrentPage = (dealsSize: number) => {

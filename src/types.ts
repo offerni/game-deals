@@ -6,6 +6,11 @@ export interface ISearchParams {
   query: string;
 }
 
+export interface IDealsLocation {
+  pathname: string;
+  state?: IFilters;
+}
+
 export interface IFilters {
   storeIds: string[];
 }

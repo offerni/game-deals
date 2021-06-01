@@ -48,6 +48,96 @@ export const STORES: IStoreInfoMap = {
       icon: "/img/stores/icons/0.png",
     },
   },
+  "25": {
+    storeName: "Epic Games Store",
+    isActive: 1,
+    images: {
+      banner: "/img/stores/banners/24.png",
+      logo: "/img/stores/logos/24.png",
+      icon: "/img/stores/icons/24.png",
+    },
+  },
+  "8": {
+    storeName: "Origin",
+    isActive: 1,
+    images: {
+      banner: "/img/stores/banners/7.png",
+      logo: "/img/stores/logos/7.png",
+      icon: "/img/stores/icons/7.png",
+    },
+  },
+  "13": {
+    storeName: "Uplay",
+    isActive: 1,
+    images: {
+      banner: "/img/stores/banners/12.png",
+      logo: "/img/stores/logos/12.png",
+      icon: "/img/stores/icons/12.png",
+    },
+  },
+  "31": {
+    storeName: "Blizzard Shop",
+    isActive: 1,
+    images: {
+      banner: "/img/stores/banners/30.png",
+      logo: "/img/stores/logos/30.png",
+      icon: "/img/stores/icons/30.png",
+    },
+  },
+  "26": {
+    storeName: "Razer Game Store",
+    isActive: 0,
+    images: {
+      banner: "/img/stores/banners/25.png",
+      logo: "/img/stores/logos/25.png",
+      icon: "/img/stores/icons/25.png",
+    },
+  },
+  "11": {
+    storeName: "Humble Store",
+    isActive: 1,
+    images: {
+      banner: "/img/stores/banners/10.png",
+      logo: "/img/stores/logos/10.png",
+      icon: "/img/stores/icons/10.png",
+    },
+  },
+  "5": {
+    storeName: "GameStop",
+    isActive: 0,
+    images: {
+      banner: "/img/stores/banners/4.png",
+      logo: "/img/stores/logos/4.png",
+      icon: "/img/stores/icons/4.png",
+    },
+  },
+  "4": {
+    storeName: "Amazon",
+    isActive: 0,
+    images: {
+      banner: "/img/stores/banners/3.png",
+      logo: "/img/stores/logos/3.png",
+      icon: "/img/stores/icons/3.png",
+    },
+  },
+  "15": {
+    storeName: "Fanatical",
+    isActive: 1,
+    images: {
+      banner: "/img/stores/banners/14.png",
+      logo: "/img/stores/logos/14.png",
+      icon: "/img/stores/icons/14.png",
+    },
+  },
+  "30": {
+    storeName: "IndieGala",
+    isActive: 1,
+    images: {
+      banner: "/img/stores/banners/29.png",
+      logo: "/img/stores/logos/29.png",
+      icon: "/img/stores/icons/29.png",
+    },
+  },
   "2": {
     storeName: "GamersGate",
     isActive: 1,
@@ -64,24 +154,6 @@ export const STORES: IStoreInfoMap = {
       banner: "/img/stores/banners/2.png",
       logo: "/img/stores/logos/2.png",
       icon: "/img/stores/icons/2.png",
-    },
-  },
-  "4": {
-    storeName: "Amazon",
-    isActive: 0,
-    images: {
-      banner: "/img/stores/banners/3.png",
-      logo: "/img/stores/logos/3.png",
-      icon: "/img/stores/icons/3.png",
-    },
-  },
-  "5": {
-    storeName: "GameStop",
-    isActive: 0,
-    images: {
-      banner: "/img/stores/banners/4.png",
-      logo: "/img/stores/logos/4.png",
-      icon: "/img/stores/icons/4.png",
     },
   },
   "6": {
@@ -102,15 +174,6 @@ export const STORES: IStoreInfoMap = {
       icon: "/img/stores/icons/6.png",
     },
   },
-  "8": {
-    storeName: "Origin",
-    isActive: 1,
-    images: {
-      banner: "/img/stores/banners/7.png",
-      logo: "/img/stores/logos/7.png",
-      icon: "/img/stores/icons/7.png",
-    },
-  },
   "9": {
     storeName: "Get Games",
     isActive: 0,
@@ -129,15 +192,6 @@ export const STORES: IStoreInfoMap = {
       icon: "/img/stores/icons/9.png",
     },
   },
-  "11": {
-    storeName: "Humble Store",
-    isActive: 1,
-    images: {
-      banner: "/img/stores/banners/10.png",
-      logo: "/img/stores/logos/10.png",
-      icon: "/img/stores/icons/10.png",
-    },
-  },
   "12": {
     storeName: "Desura",
     isActive: 0,
@@ -147,15 +201,6 @@ export const STORES: IStoreInfoMap = {
       icon: "/img/stores/icons/11.png",
     },
   },
-  "13": {
-    storeName: "Uplay",
-    isActive: 1,
-    images: {
-      banner: "/img/stores/banners/12.png",
-      logo: "/img/stores/logos/12.png",
-      icon: "/img/stores/icons/12.png",
-    },
-  },
   "14": {
     storeName: "IndieGameStand",
     isActive: 0,
@@ -163,15 +208,6 @@ export const STORES: IStoreInfoMap = {
       banner: "/img/stores/banners/13.png",
       logo: "/img/stores/logos/13.png",
       icon: "/img/stores/icons/13.png",
-    },
-  },
-  "15": {
-    storeName: "Fanatical",
-    isActive: 1,
-    images: {
-      banner: "/img/stores/banners/14.png",
-      logo: "/img/stores/logos/14.png",
-      icon: "/img/stores/icons/14.png",
     },
   },
   "16": {
@@ -255,24 +291,6 @@ export const STORES: IStoreInfoMap = {
       icon: "/img/stores/icons/23.png",
     },
   },
-  "25": {
-    storeName: "Epic Games Store",
-    isActive: 1,
-    images: {
-      banner: "/img/stores/banners/24.png",
-      logo: "/img/stores/logos/24.png",
-      icon: "/img/stores/icons/24.png",
-    },
-  },
-  "26": {
-    storeName: "Razer Game Store",
-    isActive: 0,
-    images: {
-      banner: "/img/stores/banners/25.png",
-      logo: "/img/stores/logos/25.png",
-      icon: "/img/stores/icons/25.png",
-    },
-  },
   "27": {
     storeName: "Gamesplanet",
     isActive: 1,
@@ -300,27 +318,6 @@ export const STORES: IStoreInfoMap = {
       icon: "/img/stores/icons/28.png",
     },
   },
-
-  "30": {
-    storeName: "IndieGala",
-    isActive: 1,
-    images: {
-      banner: "/img/stores/banners/29.png",
-      logo: "/img/stores/logos/29.png",
-      icon: "/img/stores/icons/29.png",
-    },
-  },
-
-  "31": {
-    storeName: "Blizzard Shop",
-    isActive: 1,
-    images: {
-      banner: "/img/stores/banners/30.png",
-      logo: "/img/stores/logos/30.png",
-      icon: "/img/stores/icons/30.png",
-    },
-  },
-
   "32": {
     storeName: "AllYouPlay",
     isActive: 1,

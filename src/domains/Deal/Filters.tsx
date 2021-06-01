@@ -1,9 +1,11 @@
 import { STORES } from "domains/Store/utils";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useHistory } from "react-router";
 import { IFilters } from "types";
 
 export const Filters = () => {
+  const history = useHistory();
   const [filterClicked, setFilterClicked] = useState(false);
   const { register, handleSubmit } = useForm();
 
@@ -12,7 +14,7 @@ export const Filters = () => {
   };
 
   const onSubmit: SubmitHandler<IFilters> = (data) => {
-    console.log(data);
+    history.push("/deals", data);
   };
 
   const handleOnChange = () => {
@@ -39,6 +41,7 @@ export const Filters = () => {
           onChange={handleOnChange}
         >
           <div className="border grid grid-cols-10 p-4">
+            {console.log(STORES)}
             {Object.keys(STORES).map((storeId) => {
               return (
                 <span key={storeId}>
