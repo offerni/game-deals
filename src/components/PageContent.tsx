@@ -20,7 +20,6 @@ const PageContent = () => {
             <Deals />
           </Route>
           <Route path="/">
-            {/* <Filters />  TBD*/}
             <Deals />
           </Route>
         </Switch>

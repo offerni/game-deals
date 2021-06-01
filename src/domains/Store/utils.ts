@@ -38,7 +38,7 @@ export const getStoreLogo = (storeID: string) => {
   return STORES[storeID];
 };
 
-const STORES: IStoreInfoMap = {
+export const STORES: IStoreInfoMap = {
   "1": {
     storeName: "Steam",
     isActive: 1,
