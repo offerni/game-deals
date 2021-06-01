@@ -6,6 +6,10 @@ export interface ISearchParams {
   query: string;
 }
 
+export interface IFilters {
+  storeIds: string[];
+}
+
 export interface IModalReducerAction {
   type: string;
   originId?: string;

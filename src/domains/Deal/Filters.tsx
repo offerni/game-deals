@@ -1,18 +1,24 @@
 import { STORES } from "domains/Store/utils";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { IFilters } from "types";
 
 export const Filters = () => {
   const [filterClicked, setFilterClicked] = useState(false);
+  const { register, handleSubmit } = useForm();
+
   const handleClick = () => {
     setFilterClicked(!filterClicked);
   };
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data: any) => console.log(data);
+
+  const onSubmit: SubmitHandler<IFilters> = (data) => {
+    console.log(data);
+  };
 
   const handleOnChange = () => {
     handleSubmit(onSubmit)();
   };
+
   return (
     <>
       <div className="grid grid-cols-12 mb-3 mt-0 text-gray-600 body-font sticky top-20 z-49 ml-10">
