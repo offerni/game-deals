@@ -72,11 +72,11 @@ const Deal = (props: Props) => {
               <img
                 className="rounded-lg w-8 h-8"
                 data-for={deal.dealId}
-                data-tip={`${deal.storeInfo.storeName}`}
+                data-tip={`${deal.storeInfo?.storeName}`}
                 data-place="top"
                 data-offset="{'top': 30, 'left': 20}"
-                alt={`Store: ${deal.storeInfo.storeName}`}
-                src={`${imgUrl}/${deal.storeInfo.images.logo}`}
+                alt={`Store: ${deal.storeInfo?.storeName}`}
+                src={`${imgUrl}/${deal.storeInfo?.images.logo}`}
               />
               <ReactTooltip id={deal.dealId} effect="float" />
               <MoreDetailsButton

@@ -1,11 +1,14 @@
-import { STORES } from "domains/Store/utils";
+import { getOrderedStores } from "domains/Store/utils";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useHistory } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { IFilters } from "types";
+
+const ORDERED_STORES = getOrderedStores();
 
 export const Filters = () => {
   const history = useHistory();
+  const location = useLocation();
   const [filterClicked, setFilterClicked] = useState(false);
   const { register, handleSubmit } = useForm();
 
@@ -14,7 +17,7 @@ export const Filters = () => {
   };
 
   const onSubmit: SubmitHandler<IFilters> = (data) => {
-    history.push("/deals", data);
+    history.push(location.pathname, data);
   };
 
   const handleOnChange = () => {
@@ -40,18 +43,17 @@ export const Filters = () => {
           className="justify-center ml-8 mr-8 mb-8 sticky top-20 z-50 bg-white"
           onChange={handleOnChange}
         >
-          <div className="border grid grid-cols-10 p-4">
-            {console.log(STORES)}
-            {Object.keys(STORES).map((storeId) => {
+          <div className="border grid grid-flow-col grid-cols-8 grid-rows-4 p-4">
+            {ORDERED_STORES.map((store) => {
               return (
-                <span key={storeId}>
+                <span key={store.storeId}>
                   <input
                     type="checkbox"
-                    value={storeId}
+                    value={store.storeId}
                     {...register("storeIds")}
                     className="mr-3"
                   />
-                  <label>{STORES[storeId].storeName}</label>
+                  <label>{store.storeName}</label>
                 </span>
               );
             })}

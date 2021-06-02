@@ -133,30 +133,32 @@ export const builDealsQueryParams = (
   location: IDealsLocation,
   dealsSize: number = 0
 ): APIDealsQueryParams => {
-  console.log(location.pathname);
+  const queryParams: APIDealsQueryParams = {};
+  if (location.state?.storeIds.length) {
+    const storeIds = location.state.storeIds.join(",");
+    queryParams.storeID = storeIds;
+  }
 
   if (location.pathname === PATHS.free) {
     return {
+      ...queryParams,
       upperPrice: 0,
     };
   }
 
-  const queryParams = {
+  return {
+    ...queryParams,
     pageNumber: getCurrentPage(dealsSize),
     onSale: 1,
     lowerPrice: 0.01,
     ...(location.pathname === PATHS.recent ? { sortBy: "recent" } : {}),
   };
-
-  if (location.state?.storeIds.length) {
-    const storeIds = location.state.storeIds.join(",");
-    return { ...queryParams, storeID: storeIds };
-  }
-
-  return queryParams;
 };
 
 const getCurrentPage = (dealsSize: number) => {
+  if (dealsSize < PAGE_SIZE) {
+    return 0;
+  }
   return dealsSize && dealsSize / PAGE_SIZE;
 };
 

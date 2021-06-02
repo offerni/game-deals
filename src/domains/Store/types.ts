@@ -1,5 +1,5 @@
 export interface IStoreInfo {
-  storeId?: string;
+  storeId: string;
   storeName: string;
   isActive: number;
   images: IStoreInfoImage;
@@ -10,7 +10,6 @@ export interface IStoreInfoImage {
   logo: string;
   icon: string;
 }
-
-export type IStoreInfoMap = {
-  [storeId: string]: IStoreInfo;
-};
+export interface IStoreInfoLocal extends IStoreInfo {
+  order: number;
+}

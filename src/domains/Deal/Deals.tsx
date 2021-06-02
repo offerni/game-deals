@@ -7,7 +7,7 @@ import LoadingSpinner from "components/LoadingSpinner";
 import ScrollToTop from "components/ScrollToTop";
 import Skeletons from "components/Skeletons";
 import { useLocation } from "react-router";
-import { scrollToTop } from "utils";
+import { PAGE_SIZE, scrollToTop } from "utils";
 import { IDealsLocation } from "types";
 
 const Deals = () => {
@@ -40,7 +40,7 @@ const Deals = () => {
         className="grid xl:grid-cols-3 lg:grid-cols-2 gap-6 grid-rows-1 place-items-center p-3"
         dataLength={deals.length}
         next={fetchNextDeals}
-        hasMore={location.pathname !== "/giveaways"}
+        hasMore={deals.length >= PAGE_SIZE}
         loader={
           <span className="col-span-3">
             <LoadingSpinner />

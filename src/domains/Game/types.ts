@@ -28,7 +28,7 @@ export interface IGameCheapestPriceEver {
 }
 
 export interface IGameDeals {
-  storeInfo: IStoreInfo;
+  storeInfo?: IStoreInfo;
   dealId: string;
   price: number;
   retailPrice: number;

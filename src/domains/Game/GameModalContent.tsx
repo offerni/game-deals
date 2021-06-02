@@ -89,7 +89,7 @@ export const GameModalContent = (props: Props) => {
                     rel="noreferrer"
                     className="text-indigo-500"
                   >
-                    {game.storeInfo.storeName}
+                    {game.storeInfo?.storeName}
                   </a>
                 </span>
               </div>
