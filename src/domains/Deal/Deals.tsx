@@ -13,21 +13,34 @@ import { useForm } from "react-hook-form";
 
 const Deals = () => {
   const [deals, setDeals] = useState<IDeal[]>([]);
+  const [error, setError] = useState<string>("");
   const location: IDealsLocation = useLocation();
   const { reset } = useForm();
 
   useEffect(() => {
     scrollToTop();
     setDeals([]);
-    window.history.replaceState({}, document.title);
+    window.history.replaceState({}, document.title); // reseting
 
-    getDeals(builDealsQueryParams(location)).then((response) => {
-      setDeals(response);
-    });
+    getDeals(builDealsQueryParams(location))
+      .then((response) => {
+        setDeals(response);
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
   }, [location, reset]);
 
-  if (!deals.length) {
+  if (!deals.length && !error) {
     return <Skeletons />;
+  }
+
+  if (error) {
+    return (
+      <div className="grid grid-cols-1 place-items-center">
+        Something went wrong...
+      </div>
+    );
   }
 
   const fetchNextDeals = () => {

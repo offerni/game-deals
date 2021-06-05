@@ -7,8 +7,10 @@ export const get = async <T>(
       if (response.ok) {
         return response.json();
       }
+
+      throw new Error(`Http Error: ${response.status}`);
     })
     .catch((err: string) => {
-      new Error(`Response Error: ${err}`);
+      throw new Error(`Http Error: ${err}`);
     });
 };
