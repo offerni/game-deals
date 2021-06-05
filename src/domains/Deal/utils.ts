@@ -16,32 +16,23 @@ import {
 } from "./types";
 import { getStoreLogo } from "domains/Store/utils";
 import { IDealsLocation } from "types";
+import { get } from "httpRequests";
+
+const API_PATH: string | undefined = `${process.env.REACT_APP_API_URL}/deals`;
 
 export const getDeals = async (
   options: APIDealsQueryParams
 ): Promise<IDeal[]> => {
-  const apiUrl: string | undefined = process.env.REACT_APP_API_URL;
-  const deals: APIDealsList[] = await fetch(
-    `${apiUrl}/deals?${buildQueryParams<APIDealsQueryParams>(options)}`
-  ).then((response) => {
-    if (response.ok) {
-      return response.json();
-    }
-  });
+  const deals = await get<APIDealsList[]>(
+    `${API_PATH}`,
+    buildQueryParams<APIDealsQueryParams>(options)
+  );
 
   return convertAPIDeals(deals);
 };
 
 export const getDealById = async (id: string): Promise<IDealSearch> => {
-  const apiUrl: string | undefined = process.env.REACT_APP_API_URL;
-  const deal: APIDealLookup = await fetch(`${apiUrl}/deals?id=${id}`).then(
-    (response) => {
-      if (response.ok) {
-        return response.json();
-      }
-    }
-  );
-
+  const deal = await get<APIDealLookup>(`${API_PATH}?id=${id}`);
   return convertAPIDealSearch(deal);
 };
 

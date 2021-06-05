@@ -119,6 +119,7 @@ export interface APIGameDeals {
 }
 
 export interface APIGamesQueryParams {
+  title?: string;
   steamAppID?: number;
   limit?: number;
   exact?: number; // ideally a boolean but the API only expects 1 or 0

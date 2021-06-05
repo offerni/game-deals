@@ -1,13 +1,10 @@
 import { APIStore, APIStoreImage } from "api";
+import { get } from "httpRequests";
 import { IStoreInfo, IStoreInfoImage, IStoreInfoLocal } from "./types";
 
 export const getStoresInfo = async (): Promise<IStoreInfo[]> => {
   const apiUrl: string | undefined = process.env.REACT_APP_API_URL;
-  const stores = await fetch(`${apiUrl}/stores`).then((response) => {
-    if (response.ok) {
-      return response.json();
-    }
-  });
+  const stores = await get<APIStore[]>(`${apiUrl}/stores`);
 
   return convertAPIStore(stores);
 };

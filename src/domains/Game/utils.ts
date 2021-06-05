@@ -16,34 +16,27 @@ import {
 } from "./types";
 import { parseImageUrlForBiggerImage } from "domains/Deal/utils";
 import { getStoreLogo } from "domains/Store/utils";
+import { get } from "httpRequests";
+
+const API_PATH: string | undefined = `${process.env.REACT_APP_API_URL}/games`;
 
 export const getGamesByTitle = async (
   title: string,
-  options: APIGamesQueryParams = {}
+  options: APIGamesQueryParams
 ): Promise<IGameSearch[]> => {
-  const apiUrl: string | undefined = process.env.REACT_APP_API_URL;
-
-  const games = await fetch(
-    `${apiUrl}/games?title=${title}&${buildQueryParams<APIGamesQueryParams>(
-      options
-    )}`
-  ).then((response) => {
-    if (response.ok) {
-      return response.json();
-    }
-  });
+  const games = await get<APIGamesList[]>(
+    `${API_PATH}`,
+    buildQueryParams<APIGamesQueryParams>({ ...options, title })
+  );
 
   return convertAPIGames(games);
 };
 
 export const getGameById = async (id: string): Promise<IGameLookup> => {
-  const apiUrl: string | undefined = process.env.REACT_APP_API_URL;
-
-  const game = await fetch(`${apiUrl}/games?id=${id}`).then((response) => {
-    if (response.ok) {
-      return response.json();
-    }
-  });
+  const game = await get<APIGameLookup>(
+    `${API_PATH}`,
+    buildQueryParams({ id })
+  );
 
   return convertAPIGameSearch(game);
 };
