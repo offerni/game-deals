@@ -2,6 +2,7 @@ import Filters from "domains/Deal/Filters";
 import { NavLink, useLocation } from "react-router-dom";
 import { PATHS } from "utils";
 import SearchBar from "./SearchBar";
+import Toggle from "./Toggle";
 
 const PageHeader = () => {
   const location = useLocation();
@@ -38,7 +39,10 @@ const PageHeader = () => {
               Free Games
             </NavLink>
           </nav>
-          <SearchBar />
+          <div className="flex">
+            <SearchBar />
+            <Toggle />
+          </div>
         </div>
       </header>
       {location.pathname !== PATHS.games && <Filters />}

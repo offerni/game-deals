@@ -7,7 +7,7 @@ import { ModalContextProvider } from "./ModalContext";
 const PageContent = () => {
   return (
     // ref: https://tailblocks.cc/
-    <div className="container m-auto">
+    <div className="container m-auto dark:bg-gray-800">
       <ModalContextProvider>
         <Switch>
           <Route path={PATHS.games}>
