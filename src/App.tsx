@@ -2,13 +2,15 @@ import PageHeader from "components/PageHeader";
 import PageFooter from "components/PageFooter";
 import PageContent from "components/PageContent";
 import { BrowserRouter as Router } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const darkModeInitialState = localStorage.getItem("darkMode") !== "false";
+  const [darkMode, setDarkMode] = useState(darkModeInitialState);
 
   const handleDarkMode = () => {
     setDarkMode(!darkMode);
+    localStorage.setItem("darkMode", (!darkMode).toString());
   };
 
   return (

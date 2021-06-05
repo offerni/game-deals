@@ -19,7 +19,7 @@ const PageFooter = () => {
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
           </svg>
         </a>
-        <p className="text-sm text-gray-500 dark:text-gray-300 sm:ml-0 sm:pl-2 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
+        <p className="text-sm text-gray-500 dark:text-gray-300 sm:ml-0 sm:pl-2 sm:py-2 sm:mt-0 mt-4">
           © 2021 Game Deals —
           <a
             href="https://twitter.com/offerni_"
