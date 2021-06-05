@@ -1,3 +1,4 @@
+import Error from "components/Error";
 import ScrollToTop from "components/ScrollToTop";
 import Skeletons from "components/Skeletons";
 import { useEffect, useState } from "react";
@@ -17,18 +18,21 @@ const Games = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const location = useLocation<ISearch>();
   const { search } = location;
+  const [error, setError] = useState<Error>();
 
   useEffect(() => {
     const parsedQueryParams = parseGamesQueryParams(search);
 
     if (parsedQueryParams.query) {
       setIsLoading(true);
-      getGamesByTitle(parsedQueryParams.query, { exact: 0 }).then(
-        (response) => {
+      getGamesByTitle(parsedQueryParams.query, { exact: 0 })
+        .then((response) => {
           setGames(response);
           setIsLoading(false);
-        }
-      );
+        })
+        .catch((error: Error) => {
+          setError(error);
+        });
     }
   }, [search]);
 
@@ -42,8 +46,12 @@ const Games = () => {
     );
   }
 
-  if (isLoading) {
+  if (isLoading && !error) {
     return <Skeletons />;
+  }
+
+  if (error) {
+    return <Error />;
   }
 
   if (!games.length) {

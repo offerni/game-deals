@@ -1,4 +1,5 @@
 import { Dialog } from "@headlessui/react";
+import Error from "components/Error";
 import LoadingSpinner from "components/LoadingSpinner";
 import { useEffect, useState } from "react";
 import { IReleaseDate } from "types";
@@ -13,16 +14,24 @@ type Props = {
 export const DealModalContent = (props: Props) => {
   const [deal, setDeal] = useState<IDealSearch>();
   const [releaseDate, setReleaseDate] = useState<IReleaseDate>();
+  const [error, setError] = useState("");
   useEffect(() => {
     if (props.dealId) {
-      getDealById(props.dealId).then((response) => {
-        setDeal(response);
-        setReleaseDate(convertDateTimestamp(response.gameInfo.releaseDate));
-      });
+      getDealById(props.dealId)
+        .then((response) => {
+          setDeal(response);
+          setReleaseDate(convertDateTimestamp(response.gameInfo.releaseDate));
+        })
+        .catch((error: Error) => {
+          setError(error.message);
+        });
     }
   }, [props.dealId, setReleaseDate]);
 
   if (!deal?.gameInfo) {
+    if (error) {
+      return <Error />;
+    }
     return (
       <>
         <Dialog.Title

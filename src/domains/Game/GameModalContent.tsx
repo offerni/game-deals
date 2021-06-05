@@ -5,6 +5,7 @@ import { getGameById } from "./utils";
 import { convertDateTimestamp } from "utils";
 import LoadingSpinner from "components/LoadingSpinner";
 import { IReleaseDate } from "types";
+import Error from "components/Error";
 
 type Props = {
   gameId: string | undefined;
@@ -13,18 +14,26 @@ type Props = {
 export const GameModalContent = (props: Props) => {
   const [game, setGame] = useState<IGameLookup>();
   const [cheapestPriceDate, setCheapestPriceDate] = useState<IReleaseDate>();
+  const [error, setError] = useState<Error>();
   useEffect(() => {
     if (props.gameId) {
-      getGameById(props.gameId).then((response) => {
-        setGame(response);
-        setCheapestPriceDate(
-          convertDateTimestamp(response.cheapestPriceEver.date)
-        );
-      });
+      getGameById(props.gameId)
+        .then((response) => {
+          setGame(response);
+          setCheapestPriceDate(
+            convertDateTimestamp(response.cheapestPriceEver.date)
+          );
+        })
+        .catch((error) => {
+          setError(error.message);
+        });
     }
   }, [props.gameId, setCheapestPriceDate]);
 
   if (!game?.info) {
+    if (error) {
+      return <Error />;
+    }
     return (
       <>
         <Dialog.Title

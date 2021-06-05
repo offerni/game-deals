@@ -10,11 +10,13 @@ import { useLocation } from "react-router";
 import { PAGE_SIZE, scrollToTop } from "utils";
 import { IDealsLocation } from "types";
 import { useForm } from "react-hook-form";
+import Error from "components/Error";
 
 const Deals = () => {
   const [deals, setDeals] = useState<IDeal[]>([]);
   const [error, setError] = useState<string>("");
   const location: IDealsLocation = useLocation();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const { reset } = useForm();
 
   useEffect(() => {
@@ -22,23 +24,29 @@ const Deals = () => {
     setDeals([]);
     window.history.replaceState({}, document.title); // reseting
 
+    setIsLoading(true);
     getDeals(builDealsQueryParams(location))
       .then((response) => {
         setDeals(response);
+        setIsLoading(false);
       })
-      .catch((err) => {
+      .catch((err: Error) => {
         setError(err.message);
       });
   }, [location, reset]);
 
-  if (!deals.length && !error) {
+  if (isLoading && !error) {
     return <Skeletons />;
   }
 
   if (error) {
+    return <Error />;
+  }
+
+  if (!deals.length) {
     return (
-      <div className="grid grid-cols-1 place-items-center">
-        Something went wrong...
+      <div className="grid grid-cols-3 place-items-center">
+        <span className="col-span-3">No Deals Found</span>
       </div>
     );
   }
