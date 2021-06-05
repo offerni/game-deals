@@ -1,6 +1,7 @@
 import Filters from "domains/Deal/Filters";
 import { NavLink, useLocation } from "react-router-dom";
 import { PATHS } from "utils";
+import ScrollToTop from "./ScrollToTop";
 import SearchBar from "./SearchBar";
 import Toggle from "./Toggle";
 

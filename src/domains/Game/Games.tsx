@@ -1,5 +1,4 @@
 import Error from "components/Error";
-import ScrollToTop from "components/ScrollToTop";
 import Skeletons from "components/Skeletons";
 import { useEffect, useState } from "react";
 import { Redirect, useLocation } from "react-router";
@@ -64,8 +63,7 @@ const Games = () => {
 
   return (
     <>
-      <ScrollToTop />
-      <div className="grid grid-cols-3 xl:grid-cols-3 lg:grid-cols-2 gap-6 grid-rows-1 place-items-center p-3">
+      <div className="grid grid-cols-3 xl:grid-cols-3 lg:grid-cols-2 gap-6 grid-rows-1 place-items-center p-3 mt-10">
         {games.map((game) => {
           return <Game key={game.gameId} game={game} />;
         })}

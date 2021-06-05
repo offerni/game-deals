@@ -4,7 +4,6 @@ import { IDeal } from "./types";
 import { builDealsQueryParams, getDeals } from "./utils";
 import InfiniteScroll from "react-infinite-scroll-component";
 import LoadingSpinner from "components/LoadingSpinner";
-import ScrollToTop from "components/ScrollToTop";
 import Skeletons from "components/Skeletons";
 import { useLocation } from "react-router";
 import { PAGE_SIZE, scrollToTop } from "utils";
@@ -59,7 +58,6 @@ const Deals = () => {
 
   return (
     <>
-      <ScrollToTop />
       <InfiniteScroll
         className="grid xl:grid-cols-3 lg:grid-cols-2 gap-6 grid-rows-1 place-items-center p-3"
         dataLength={deals.length}
