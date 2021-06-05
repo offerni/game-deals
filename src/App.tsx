@@ -2,7 +2,7 @@ import PageHeader from "components/PageHeader";
 import PageFooter from "components/PageFooter";
 import PageContent from "components/PageContent";
 import { BrowserRouter as Router } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function App() {
   const darkModeInitialState = localStorage.getItem("darkMode") !== "false";
