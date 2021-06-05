@@ -32,21 +32,21 @@ export const Filters = () => {
 
   return (
     <>
-      <div className="grid grid-cols-12 mb-3 mt-0 text-gray-600 body-font sticky top-20 z-50 ml-10">
+      <div className="grid grid-cols-12 mb-3 mt-0 text-gray-600 dark:text-gray-100 body-font sticky top-20 z-50 ml-10">
         <button
           onClick={handleClick}
           className={`rounded-b-lg ${
             filterOpen
-              ? "shadow-sm bg-indigo-100 scale-110"
+              ? "shadow-sm bg-indigo-100 scale-110 dark:bg-indigo-600"
               : "bg-indigo-50 scale-100"
-          } border-0 py-1 px-3 focus:outline-none transition duration-100 ease-in-out hover:bg-indigo-100 transform hover:-translate-w-1 hover:scale-110`}
+          } border-0 py-1 px-3 dark:bg-indigo-500 focus:outline-none transition duration-100 ease-in-out hover:bg-indigo-100 transform hover:-translate-w-1 hover:scale-110`}
         >
           Filters
         </button>
       </div>
       {filterOpen && (
         <form
-          className="justify-center ml-8 mr-8 mb-8 sticky top-20 z-50 bg-white"
+          className="justify-center ml-8 mr-8 mb-8 sticky top-20 z-50 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-100"
           onChange={handleOnChange}
         >
           <div className="border grid grid-flow-col grid-cols-8 grid-rows-4 p-4">

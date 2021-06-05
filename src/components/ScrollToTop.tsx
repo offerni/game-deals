@@ -14,15 +14,18 @@ const ScrollToTop = () => {
         data-offset="{'left': 20}"
       >
         <svg
-          className="w-10 h-10 text-amber-900 transform rotate-180"
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-7 w-7 text-gray-800 dark:text-gray-300"
           fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
           viewBox="0 0 24 24"
           stroke="currentColor"
         >
-          <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M5 11l7-7 7 7M5 19l7-7 7 7"
+          />
         </svg>
       </button>
       <ReactTooltip id="scroll-to-top-button" effect="float" />
@@ -31,3 +34,17 @@ const ScrollToTop = () => {
 };
 
 export default ScrollToTop;
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  className="h-6 w-6"
+  fill="none"
+  viewBox="0 0 24 24"
+  stroke="currentColor"
+>
+  <path
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth={2}
+    d="M5 11l7-7 7 7M5 19l7-7 7 7"
+  />
+</svg>;

@@ -1,15 +1,13 @@
-import { useState } from "react";
+type Props = {
+  darkMode: boolean;
+  handleDarkMode: () => void;
+};
 
-const Toggle = () => {
-  const [toggle, setToggle] = useState(true);
-
-  const handleToggle = () => {
-    setToggle(!toggle);
-  };
-
+const Toggle = (props: Props) => {
   return (
-    <button onClick={handleToggle}>
-      {toggle ? (
+    <button onClick={props.handleDarkMode}>
+      {!props.darkMode ? (
+        // Sun
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
@@ -26,9 +24,10 @@ const Toggle = () => {
           )
         </svg>
       ) : (
+        // Moon
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
+          className="h-5 w-5 dark:text-gray-100"
           viewBox="0 0 20 20"
           fill="currentColor"
         >
