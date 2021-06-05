@@ -1,9 +1,10 @@
 import Filters from "domains/Deal/Filters";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { PATHS } from "utils";
 import SearchBar from "./SearchBar";
 
 const PageHeader = () => {
+  const location = useLocation();
   return (
     <>
       <header className="text-gray-600 body-font bg-indigo-100 sticky top-0 z-50">
@@ -40,7 +41,7 @@ const PageHeader = () => {
           <SearchBar />
         </div>
       </header>
-      <Filters />
+      {location.pathname !== PATHS.games && <Filters />}
     </>
   );
 };
