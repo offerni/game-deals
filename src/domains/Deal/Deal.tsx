@@ -53,7 +53,7 @@ const Deal = (props: Props) => {
           </div>
           <div>
             {deal.steamRatingText && (
-              <p>
+              <p className="text-gray-500 dark:text-gray-400 mb-3">
                 Steam Rating: <span>{deal.steamRatingText}</span>
               </p>
             )}
