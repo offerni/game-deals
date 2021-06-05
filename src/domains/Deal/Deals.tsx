@@ -9,19 +9,22 @@ import Skeletons from "components/Skeletons";
 import { useLocation } from "react-router";
 import { PAGE_SIZE, scrollToTop } from "utils";
 import { IDealsLocation } from "types";
+import { useForm } from "react-hook-form";
 
 const Deals = () => {
   const [deals, setDeals] = useState<IDeal[]>([]);
   const location: IDealsLocation = useLocation();
+  const { reset } = useForm();
 
   useEffect(() => {
     scrollToTop();
     setDeals([]);
+    window.history.replaceState({}, document.title);
 
     getDeals(builDealsQueryParams(location)).then((response) => {
       setDeals(response);
     });
-  }, [location]);
+  }, [location, reset]);
 
   if (!deals.length) {
     return <Skeletons />;
