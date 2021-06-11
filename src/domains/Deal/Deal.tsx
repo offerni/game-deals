@@ -29,7 +29,7 @@ const Deal = (props: Props) => {
           />
         </a>
         <div className="flex-grow sm:pl-8">
-          <h2 className="title-font font-medium text-lg text-gray-900 dark:text-gray-300 font-bold">
+          <h2 className="title-font font-medium text-lg text-textPrimary dark:text-textPrimary-dark font-bold">
             <a
               href={`https://www.cheapshark.com/redirect?dealID=${deal.dealId}`}
               target="_blank"
@@ -63,7 +63,7 @@ const Deal = (props: Props) => {
                   target="_blank"
                   rel="noreferrer"
                   href={`${metacriticUrl}${deal.metacriticLink}`}
-                  className="text-indigo-500"
+                  className="text-link dark:text-link-dark font-bold"
                 >
                   Metacritic Score: {deal.metacriticScore}
                 </a>

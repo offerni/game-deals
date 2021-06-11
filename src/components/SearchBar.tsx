@@ -19,7 +19,7 @@ const SearchBar = () => {
       <div className="relative text-gray-600 focus-within:text-gray-400 w-auto z-50">
         <input
           type="search"
-          className="py-2 text-sm text-gray-900 dark:text-gray-100 bg-indigo-50 dark:bg-indigo-500 opacity-75 rounded-md pl-3 focus:outline-none focus:bg-white focus:text-gray-900"
+          className="py-2 text-sm text-gray-900 dark:text-gray-100 bg-primary dark:bg-primary-dark opacity-75 rounded-md pl-3 focus:outline-none focus:bg-white focus:text-gray-900"
           placeholder="Search Game..."
           autoComplete="off"
           {...register("params", { required: true })}

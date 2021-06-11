@@ -96,7 +96,7 @@ export const GameModalContent = (props: Props) => {
                     href={`https://www.cheapshark.com/redirect?dealID=${game.dealId}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-indigo-500"
+                    className="text-link dark:text-link-dark"
                   >
                     {game.storeInfo?.storeName}
                   </a>

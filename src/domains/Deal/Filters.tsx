@@ -37,9 +37,9 @@ export const Filters = () => {
           onClick={handleClick}
           className={`rounded-b-lg ${
             filterOpen
-              ? "shadow-sm bg-indigo-100 scale-110 dark:bg-indigo-600"
-              : "bg-indigo-50 scale-100"
-          } border-0 py-1 px-3 dark:bg-indigo-500 focus:outline-none transition duration-100 ease-in-out hover:bg-indigo-100 transform hover:-translate-w-1 hover:scale-110`}
+              ? "shadow-sm bg-primary scale-110 dark:bg-primary-dark"
+              : "bg-primary-50 scale-100"
+          } border-0 py-1 px-3 dark:bg-primary focus:outline-none transition duration-100 ease-in-out hover:bg-primary-100 transform hover:-translate-w-1 hover:scale-110`}
         >
           Filters
         </button>
@@ -49,7 +49,7 @@ export const Filters = () => {
           className="justify-center ml-8 mr-8 mb-8 z-50 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-100"
           onChange={handleOnChange}
         >
-          <div className="border grid grid-flow-col grid-cols-8 grid-rows-4 p-4">
+          <div className="border grid grid-flow-col grid-cols-8 grid-rows-5 p-4">
             {ORDERED_STORES.map((store) => {
               return (
                 <span key={store.storeId}>
@@ -59,7 +59,9 @@ export const Filters = () => {
                     {...register("storeIds")}
                     className="mr-3"
                   />
-                  <label>{store.storeName}</label>
+                  <label className="text-textSecondary dark:text-textSecondary-dark">
+                    {store.storeName}
+                  </label>
                 </span>
               );
             })}

@@ -24,7 +24,7 @@ const Game = (props: Props) => {
           />
         </a>
         <div className="flex-grow sm:pl-8">
-          <h2 className="title-font font-medium text-lg text-gray-900 dark:text-gray-300 font-bold">
+          <h2 className="title-font font-medium text-lg text-textPrimary dark:text-textPrimary-dark font-bold">
             <a
               href={`https://www.cheapshark.com/redirect?dealID=${game.cheapestDealId}`}
               target="_blank"

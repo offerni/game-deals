@@ -1,7 +1,6 @@
 import Filters from "domains/Deal/Filters";
 import { NavLink, useLocation } from "react-router-dom";
 import { PATHS } from "utils";
-import ScrollToTop from "./ScrollToTop";
 import SearchBar from "./SearchBar";
 import Toggle from "./Toggle";
 
@@ -14,7 +13,7 @@ const PageHeader = (props: Props) => {
   const location = useLocation();
   return (
     <>
-      <header className="text-gray-600 body-font bg-indigo-100 dark:bg-indigo-600 sticky top-0 z-50">
+      <header className="body-font bg-primary dark:bg-primary-dark sticky top-0 z-50">
         <div className="container flex flex-wrap p-5 flex-col md:flex-row items-center">
           <NavLink
             to={PATHS.deals}
@@ -27,29 +26,31 @@ const PageHeader = (props: Props) => {
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
-              className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+              className="w-10 h-10 text-white p-2 bg-primary rounded-full"
               viewBox="0 0 24 24"
             >
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
             </svg>
-            <span className="ml-3 text-xl dark:text-gray-100">Game Deals</span>
+            <span className="ml-3 text-xl text-textPrimary dark:text-textPrimary-dark font-bold">
+              Game Deals
+            </span>
           </NavLink>
           <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
             <NavLink
               to={PATHS.deals}
-              className="mr-5 hover:text-gray-900 dark:text-gray-100"
+              className="mr-5 text-textPrimary dark:text-textPrimary-dark hover:text-gray-900"
             >
               Top Deals
             </NavLink>
             <NavLink
               to={PATHS.recent}
-              className="mr-5 hover:text-gray-900 dark:text-gray-100"
+              className="mr-5 text-textPrimary dark:text-textPrimary-dark hover:text-gray-900 "
             >
               Recent Deals
             </NavLink>
             <NavLink
               to={PATHS.free}
-              className="mr-5 hover:text-gray-900 dark:text-gray-100"
+              className="mr-5 text-textPrimary dark:text-textPrimary-dark hover:text-gray-900 "
             >
               Free Games
             </NavLink>

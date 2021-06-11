@@ -1,6 +1,6 @@
 const PageFooter = () => {
   return (
-    <footer className="text-gray-600 body-font bg-indigo-100 dark:bg-indigo-600 mb-10 sticky bottom-0 opacity-80">
+    <footer className="text-gray-600 body-font bg-primary dark:bg-primary-dark mb-10 sticky bottom-0 opacity-80">
       <div className="px-5 py-2 mt-5 flex  sm:flex-row flex-col">
         <a
           href="/#"
@@ -13,7 +13,7 @@ const PageFooter = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
-            className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
+            className="w-10 h-10 text-white p-2 bg-primary dark:bg-primary-dark rounded-full"
             viewBox="0 0 24 24"
           >
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
