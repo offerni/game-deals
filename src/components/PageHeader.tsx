@@ -31,26 +31,26 @@ const PageHeader = (props: Props) => {
             >
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
             </svg>
-            <span className="ml-3 text-xl text-textPrimary dark:text-textPrimary-dark font-bold">
+            <span className="ml-3 text-xl font-bold text-textPrimary dark:text-textPrimary-dark">
               Game Deals
             </span>
           </NavLink>
           <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
             <NavLink
               to={PATHS.deals}
-              className="mr-5 text-textPrimary dark:text-textPrimary-dark hover:text-gray-900"
+              className="mr-5 text-textPrimary dark:text-textPrimary-dark hover:text-textPrimary-dark dark:hover:text-textPrimary"
             >
               Top Deals
             </NavLink>
             <NavLink
               to={PATHS.recent}
-              className="mr-5 text-textPrimary dark:text-textPrimary-dark hover:text-gray-900 "
+              className="mr-5 text-textPrimary dark:text-textPrimary-dark hover:text-textPrimary-dark dark:hover:text-textPrimary "
             >
               Recent Deals
             </NavLink>
             <NavLink
               to={PATHS.free}
-              className="mr-5 text-textPrimary dark:text-textPrimary-dark hover:text-gray-900 "
+              className="mr-5 text-textPrimary dark:text-textPrimary-dark hover:text-textPrimary-dark dark:hover:text-textPrimary "
             >
               Free Games
             </NavLink>
