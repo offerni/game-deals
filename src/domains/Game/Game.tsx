@@ -37,7 +37,7 @@ const Game = (props: Props) => {
             </a>
           </h2>
           <h3 className="text-gray-500 dark:text-gray-400 mb-3">
-            Cheapest: ${game.cheapest.toFixed(2)}
+            Lowest price: ${game.cheapest.toFixed(2)}
           </h3>
         </div>
         <div className="self-center">

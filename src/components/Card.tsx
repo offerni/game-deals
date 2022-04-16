@@ -4,7 +4,7 @@ type Props = {
 };
 
 const cssTransition = `
-  transition duration-100 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700 transform hover:-translate-w-1 hover:scale-110
+  transition duration-100 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700 transform md:hover:-translate-w-1 lg:hover:scale-105
 `;
 
 const Card = (props: Props) => {

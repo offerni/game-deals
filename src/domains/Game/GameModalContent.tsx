@@ -58,11 +58,11 @@ export const GameModalContent = (props: Props) => {
         {game.info.title}
       </Dialog.Title>
       <div className="grid grid-cols-2 rows-2 justfy-start">
-        <h3 className="font-medium">Cheaper price ever: </h3>
+        <h3 className="font-medium">Lowest price ever: </h3>
         <span>${game.cheapestPriceEver.price}</span>
       </div>
       <div className="grid grid-cols-2 rows-2 justfy-start">
-        <h3 className="font-medium">Cheaper price registered on:</h3>
+        <h3 className="font-medium">Lowest price registered on:</h3>
         <span>{`${cheapestPriceDate?.dateString} ${
           cheapestPriceDate?.ageString && `(${cheapestPriceDate.ageString})`
         }`}</span>
@@ -78,16 +78,22 @@ export const GameModalContent = (props: Props) => {
               key={game.dealId}
             >
               <div className="grid grid-cols-2 rows-2 justfy-start">
-                <h3 className="font-medium">Price:</h3>
-                <span>${game.price}</span>
+                <h3 className="font-medium">Current price:</h3>
+                <span className="text-green-400 dark:text-green-500 font-semibold">
+                  ${game.price}
+                </span>
               </div>
               <div className="grid grid-cols-2 rows-2 justfy-start">
-                <h3 className="font-medium">Retail price:</h3>
-                <span>${game.retailPrice}</span>
+                <h3 className="font-medium">Full price:</h3>
+                <span className="text-red-500 dark:text-red-700 ">
+                  ${game.retailPrice}
+                </span>
               </div>
               <div className="grid grid-cols-2 rows-2 justfy-start">
                 <h3 className="font-medium">Discount:</h3>
-                <span>{Math.round(game.savings)}%</span>
+                <span className="text-green-400 dark:text-green-500 font-semibold">
+                  {Math.round(game.savings)}%
+                </span>
               </div>
               <div className="grid grid-cols-2 rows-2 justfy-start">
                 <h3 className="font-medium">Store:</h3>

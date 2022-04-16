@@ -64,7 +64,7 @@ const Deal = (props: Props) => {
                 target="_blank"
                 rel="noreferrer"
                 href={`${metacriticUrl}${deal.metacriticLink}`}
-                className="text-link dark:text-link-dark font-bold"
+                className="text-link dark:text-link-dark font-medium"
               >
                 Metacritic Score: {deal.metacriticScore}
                 <svg
