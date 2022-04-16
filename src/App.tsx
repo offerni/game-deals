@@ -3,7 +3,7 @@ import PageFooter from "components/PageFooter";
 import PageContent from "components/PageContent";
 import { BrowserRouter as Router } from "react-router-dom";
 import { useState } from "react";
-import { toggleBodyDarkMode } from "utils";
+import { toggleBodyDarkMode, trackClickEvent } from "utils";
 
 function App() {
   const darkModeInitialState = localStorage.getItem("darkMode") !== "false";
@@ -13,6 +13,7 @@ function App() {
     const newDarkModeValue = !darkMode;
     setDarkMode(newDarkModeValue);
     localStorage.setItem("darkMode", newDarkModeValue.toString());
+    trackClickEvent("dark_mode", { darkMode: newDarkModeValue });
 
     toggleBodyDarkMode(newDarkModeValue);
   };

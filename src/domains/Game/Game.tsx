@@ -40,7 +40,7 @@ const Game = (props: Props) => {
             Lowest price: ${game.cheapest.toFixed(2)}
           </h3>
         </div>
-        <div className="self-center">
+        <div className="self-center sm:self-start">
           <MoreDetailsButton
             originId={game.gameId}
             contentType={{ game: true }}

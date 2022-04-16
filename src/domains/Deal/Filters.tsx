@@ -4,6 +4,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useHistory, useLocation } from "react-router";
 import { IFilters } from "types";
 import { FilterIcon } from "@heroicons/react/outline";
+import { trackClickEvent } from "utils";
 
 const ORDERED_STORES = getOrderedStores();
 
@@ -21,6 +22,7 @@ export const Filters = () => {
 
   const handleClick = () => {
     setFilterOpen(!filterOpen);
+    trackClickEvent("filters");
   };
 
   const onSubmit: SubmitHandler<IFilters> = (data) => {

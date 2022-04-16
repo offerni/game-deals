@@ -58,3 +58,11 @@ export const toggleBodyDarkMode = (darkMode = false) => {
     }`;
   }
 };
+
+export const trackClickEvent = (
+  subject: string,
+  options?: Record<string, any>
+) => {
+  // @ts-ignore gtag is at window
+  window.gtag("event", `click_${subject}`, options || {});
+};

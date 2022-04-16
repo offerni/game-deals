@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
+import { trackClickEvent } from "utils";
 
 const PageFooter = () => {
   const handleGithubClick = () => {
-    // @ts-ignore gtag is at window
-    window.gtag("event", "click_github");
+    trackClickEvent("github");
   };
   return (
     <footer className="text-gray-600 body-font bg-primary dark:bg-primary-dark w-full fixed bottom-0 opacity-80 px-5 flex sm:gap-2 gap-3 items-center">
