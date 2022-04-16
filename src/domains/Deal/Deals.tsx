@@ -63,7 +63,7 @@ const Deals = () => {
       next={fetchNextDeals}
       hasMore={deals.length >= PAGE_SIZE}
       loader={
-        <span className="col-span-3">
+        <span className="col-span-1 lg:col-span-2 xl:col-span-3">
           <LoadingSpinner />
         </span>
       }
