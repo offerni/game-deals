@@ -16,10 +16,11 @@ const Game = (props: Props) => {
             href={`https://www.cheapshark.com/redirect?dealID=${game.cheapestDealId}`}
             target="_blank"
             rel="noreferrer"
+            className="w-full h-full"
           >
             <img
               alt={game.external}
-              className="w-full object-contain"
+              className="w-full h-full object-contain"
               src={game.thumb}
             />
           </a>
