@@ -14,10 +14,10 @@ const PageHeader = (props: Props) => {
   return (
     <>
       <header className="body-font bg-primary dark:bg-primary-dark sticky top-0 z-50">
-        <div className="container flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <div className="container flex gap-4 md:gap-2 p-5 flex-col md:flex-row items-center">
           <NavLink
             to={PATHS.deals}
-            className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+            className="flex title-font font-medium items-center text-gray-900 gap-2"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -26,16 +26,16 @@ const PageHeader = (props: Props) => {
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
-              className="w-10 h-10 text-white p-2 bg-primary rounded-full"
+              className="w-10 h-10 text-white p-2 bg-primary rounded-full text-textPrimary dark:bg-primary-dark"
               viewBox="0 0 24 24"
             >
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
             </svg>
-            <span className="ml-3 text-xl font-bold text-textPrimary dark:text-textPrimary-dark">
+            <span className="text-xl font-bold text-textPrimary dark:text-textPrimary-dark">
               Game Deals
             </span>
           </NavLink>
-          <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
+          <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex  items-center text-base justify-center">
             <NavLink
               to={PATHS.deals}
               className="mr-5 text-textPrimary dark:text-textPrimary-dark hover:text-textPrimary-dark dark:hover:text-textPrimary"
@@ -55,7 +55,7 @@ const PageHeader = (props: Props) => {
               Free Games
             </NavLink>
           </nav>
-          <div className="flex">
+          <div className="flex gap-1">
             <SearchBar />
             <Toggle
               darkMode={props.darkMode}

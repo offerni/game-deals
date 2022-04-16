@@ -8,7 +8,7 @@ import ScrollToTop from "./ScrollToTop";
 const PageContent = () => {
   return (
     // ref: https://tailblocks.cc/
-    <div className="container m-auto dark:bg-gray-800 z-49">
+    <div className="container m-auto dark:bg-gray-800">
       <ScrollToTop />
       <ModalContextProvider>
         <Switch>

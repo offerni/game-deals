@@ -388,6 +388,17 @@ export const STORES: IStoreInfoLocal[] = [
       icon: "/img/stores/icons/31.png",
     },
   },
+  {
+    storeId: "33",
+    storeName: "DLGamer",
+    isActive: 1,
+    order: 33,
+    images: {
+      banner: "/img/stores/banners/32.png",
+      logo: "/img/stores/logos/32.png",
+      icon: "/img/stores/icons/32.png",
+    },
+  },
 ];
 
 export const getOrderedStores = (): IStoreInfoLocal[] =>

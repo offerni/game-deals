@@ -1,7 +1,7 @@
 const PageFooter = () => {
   return (
-    <footer className="text-gray-600 body-font bg-primary dark:bg-primary-dark mb-10 sticky bottom-0 opacity-80">
-      <div className="px-5 py-2 mt-5 flex  sm:flex-row flex-col">
+    <footer className="text-gray-600 body-font bg-primary dark:bg-primary-dark w-full fixed bottom-0 opacity-80 p-2">
+      <div className="px-5 py-2 flex sm:flex-row flex-col sm:gap-0 gap-3">
         <a
           href="/#"
           className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900 dark:text-gray-100"
@@ -13,24 +13,25 @@ const PageFooter = () => {
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
-            className="w-10 h-10 text-white p-2 bg-primary dark:bg-primary-dark rounded-full"
+            className="w-10 h-10 text-gray-500 dark:text-white p-2 bg-primary dark:bg-primary-dark rounded-full"
             viewBox="0 0 24 24"
           >
             <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
           </svg>
+          <p className="text-sm text-gray-500 dark:text-gray-300 sm:ml-0 sm:pl-2 sm:py-2 sm:mt-0 mt-2">
+            © {new Date().getFullYear()} Game Deals —
+            <a
+              href="https://twitter.com/offerni_"
+              className="text-gray-600 dark:text-gray-50 ml-1"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              @offerni_
+            </a>
+          </p>
         </a>
-        <p className="text-sm text-gray-500 dark:text-gray-300 sm:ml-0 sm:pl-2 sm:py-2 sm:mt-0 mt-4">
-          © 2021 Game Deals —
-          <a
-            href="https://twitter.com/offerni_"
-            className="text-gray-600 dark:text-gray-50 ml-1"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            @offerni_
-          </a>
-        </p>
-        <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+
+        <span className="inline-flex sm:ml-auto sm:mt-0 items-center justify-center sm:justify-start">
           <a href="/#" className="text-gray-500 dark:text-gray-200">
             <svg
               fill="currentColor"

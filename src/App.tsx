@@ -14,7 +14,9 @@ function App() {
   };
 
   return (
-    <div className={`App ${darkMode ? "dark bg-gray-800" : ""}`}>
+    <div
+      className={`min-h-screen ${darkMode ? "dark bg-gray-800" : "bg-white"}`}
+    >
       <Router>
         <PageHeader darkMode={darkMode} handleDarkMode={handleDarkMode} />
         <PageContent />

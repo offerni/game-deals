@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useHistory, useLocation } from "react-router";
 import { IFilters } from "types";
+import { FilterIcon } from "@heroicons/react/outline";
 
 const ORDERED_STORES = getOrderedStores();
 
@@ -31,17 +32,21 @@ export const Filters = () => {
   };
 
   return (
-    <>
-      <div className="grid grid-cols-12 mb-3 mt-0 text-gray-600 dark:text-gray-100 body-font z-50 ml-10">
+    <div
+      className={`sm:fixed sm:z-50 ${
+        filterOpen ? "sm:bg-primary sm:dark:bg-primary-dark" : ""
+      }`}
+    >
+      <div className="mb-3 mt-0 text-gray-600 dark:text-gray-100 body-font ml-6">
         <button
           onClick={handleClick}
           className={`rounded-b-lg ${
             filterOpen
               ? "shadow-sm bg-primary scale-110 dark:bg-primary-dark"
-              : "bg-primary-50 scale-100"
-          } border-0 py-1 px-3 dark:bg-primary focus:outline-none transition duration-100 ease-in-out hover:bg-primary-100 transform hover:-translate-w-1 hover:scale-110`}
+              : "bg-primary scale-100"
+          } border-0 dark:bg-primary-dark focus:outline-none transition duration-100 ease-in-out hover:bg-primary-100 transform hover:-translate-w-1 hover:scale-110`}
         >
-          Filters
+          <FilterIcon className="w-6 mx-1 my-1 p-0.5 text-gray-500 dark:text-white" />
         </button>
       </div>
       {filterOpen && (
@@ -49,7 +54,7 @@ export const Filters = () => {
           className="justify-center ml-8 mr-8 mb-8 z-50 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-100"
           onChange={handleOnChange}
         >
-          <div className="border grid grid-flow-col grid-cols-8 grid-rows-5 p-4">
+          <div className="border gap-2 grid grid-cols-1 sm:grid-cols-2 sm:grid-cols-3 p-4">
             {ORDERED_STORES.map((store) => {
               return (
                 <span key={store.storeId}>
@@ -68,7 +73,7 @@ export const Filters = () => {
           </div>
         </form>
       )}
-    </>
+    </div>
   );
 };
 

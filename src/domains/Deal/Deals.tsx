@@ -57,23 +57,21 @@ const Deals = () => {
   };
 
   return (
-    <>
-      <InfiniteScroll
-        className="grid xl:grid-cols-3 lg:grid-cols-2 gap-6 grid-rows-1 place-items-center p-3"
-        dataLength={deals.length}
-        next={fetchNextDeals}
-        hasMore={deals.length >= PAGE_SIZE}
-        loader={
-          <span className="col-span-3">
-            <LoadingSpinner />
-          </span>
-        }
-      >
-        {deals.map((deal) => {
-          return <Deal key={deal.dealId} deal={deal} />;
-        })}
-      </InfiniteScroll>
-    </>
+    <InfiniteScroll
+      className="grid xl:grid-cols-3 lg:grid-cols-2 gap-6 place-items-center p-3 mt-10"
+      dataLength={deals.length}
+      next={fetchNextDeals}
+      hasMore={deals.length >= PAGE_SIZE}
+      loader={
+        <span className="col-span-3">
+          <LoadingSpinner />
+        </span>
+      }
+    >
+      {deals.map((deal) => {
+        return <Deal key={deal.dealId} deal={deal} />;
+      })}
+    </InfiniteScroll>
   );
 };
 

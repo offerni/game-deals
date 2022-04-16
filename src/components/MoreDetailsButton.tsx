@@ -18,7 +18,7 @@ const MoreDetailsButton = (props: Props) => {
   };
   return (
     <button
-      className="text-link dark:text-link-dark font-bold underline inline-flex items-center md:mb-2 lg:mb-0 focus:outline-none mt-2"
+      className="text-link dark:text-link-dark font-bold underline inline-flex items-center focus:outline-none"
       onClick={handleOnClick}
     >
       More Details
