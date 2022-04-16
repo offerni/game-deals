@@ -1,25 +1,15 @@
 import { Link } from "react-router-dom";
 import { trackClickEvent } from "utils";
+import Logo from "./Logo";
 
 const PageFooter = () => {
   const handleGithubClick = () => {
     trackClickEvent("github");
   };
   return (
-    <footer className="text-gray-600 body-font bg-primary dark:bg-primary-dark w-full fixed bottom-0 opacity-80 px-5 flex sm:gap-2 gap-3 items-center">
+    <footer className="text-gray-600 body-font bg-primary dark:bg-primary-dark w-full fixed bottom-0 opacity-80 py-1 px-5 flex sm:gap-2 gap-3 items-center">
       <Link to="/">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          className="w-10 h-10 text-gray-500 dark:text-white p-2 bg-primary dark:bg-primary-dark rounded-full"
-          viewBox="0 0 24 24"
-        >
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-        </svg>
+        <Logo />
       </Link>
       <p className="text-sm text-gray-500 dark:text-gray-300 flex-1">
         © {new Date().getFullYear()} Deal Finder

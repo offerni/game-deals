@@ -1,6 +1,7 @@
 import Filters from "domains/Deal/Filters";
 import { NavLink, useLocation } from "react-router-dom";
 import { PATHS } from "utils";
+import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import Toggle from "./Toggle";
 
@@ -19,18 +20,7 @@ const PageHeader = (props: Props) => {
             to={PATHS.deals}
             className="flex title-font font-medium items-center text-gray-900 gap-4"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              className="w-6 h-6 text-white bg-primary rounded-full text-textPrimary dark:bg-primary-dark"
-              viewBox="0 0 24 24"
-            >
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-            </svg>
+            <Logo />
             <span className="text-xl font-bold text-textPrimary dark:text-textPrimary-dark">
               Deal Finder
             </span>
