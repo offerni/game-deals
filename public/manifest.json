@@ -1,6 +1,6 @@
 {
-  "short_name": "Game Deals",
-  "name": "Game Deals",
+  "short_name": "Deal Finder",
+  "name": "Deal Finder",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",

@@ -32,7 +32,7 @@ const PageHeader = (props: Props) => {
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
             </svg>
             <span className="text-xl font-bold text-textPrimary dark:text-textPrimary-dark">
-              Game Deals
+              Deal Finder
             </span>
           </NavLink>
           <nav className="px-3 my-2 md:border-l md:border-gray-400	flex items-center text-base justify-center grow-0">
