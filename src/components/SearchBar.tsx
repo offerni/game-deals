@@ -4,12 +4,7 @@ import { useHistory } from "react-router";
 
 const SearchBar = () => {
   const history = useHistory();
-  const {
-    register,
-    handleSubmit,
-    clearErrors,
-    formState: { errors },
-  } = useForm<ISearch>();
+  const { register, handleSubmit, clearErrors } = useForm<ISearch>();
 
   const onSearchSubmit: SubmitHandler<ISearch> = (search: ISearch) => {
     history.push(`/games?q=${search.params}`);
@@ -42,11 +37,6 @@ const SearchBar = () => {
           </button>
         </span>
       </div>
-      {errors.params && (
-        <div className="text-sm text-gray-900 dark:text-gray-100 ml-1 mt-1">
-          This field is required
-        </div>
-      )}
     </form>
   );
 };
