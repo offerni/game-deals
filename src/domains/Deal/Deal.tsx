@@ -21,11 +21,12 @@ const Deal = (props: Props) => {
             href={`https://www.cheapshark.com/redirect?dealID=${deal.dealId}`}
             target="_blank"
             rel="noreferrer"
+            className="w-full h-full"
           >
             <img
               alt={deal.title}
               src={deal.thumb}
-              className="w-full object-contain"
+              className="w-full h-full object-contain"
             />
           </a>
         }

@@ -25,7 +25,7 @@ const Game = (props: Props) => {
           </a>
         }
       >
-        <div className="flex-grow sm:pl-8">
+        <div className="h-full flex flex-col justify-center">
           <h2 className="title-font font-medium text-lg text-textPrimary dark:text-textPrimary-dark font-bold">
             <a
               href={`https://www.cheapshark.com/redirect?dealID=${game.cheapestDealId}`}
@@ -36,15 +36,15 @@ const Game = (props: Props) => {
               {game.external}
             </a>
           </h2>
-          <div className="grid grid-cols-1 grid-rows-1">
-            <h3 className="text-gray-500 dark:text-gray-400 mb-3">
-              Cheapest: ${game.cheapest}
-            </h3>
-            <MoreDetailsButton
-              originId={game.gameId}
-              contentType={{ game: true }}
-            />
-          </div>
+          <h3 className="text-gray-500 dark:text-gray-400 mb-3">
+            Cheapest: ${game.cheapest.toFixed(2)}
+          </h3>
+        </div>
+        <div className="self-center">
+          <MoreDetailsButton
+            originId={game.gameId}
+            contentType={{ game: true }}
+          />
         </div>
       </Card>
     </>

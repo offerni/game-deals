@@ -38,7 +38,7 @@ export const GameModalContent = (props: Props) => {
       <>
         <Dialog.Title
           as="h3"
-          className="text-lg leading-6 font-semibold text-gray-900 mb-4 mt-0"
+          className="title-font font-medium text-lg text-textPrimary dark:text-textPrimary-dark font-bold"
         >
           Game Details
         </Dialog.Title>
@@ -53,7 +53,7 @@ export const GameModalContent = (props: Props) => {
     <>
       <Dialog.Title
         as="h3"
-        className="text-lg leading-6 font-semibold text-gray-900 mb-4 mt-0"
+        className="title-font font-medium text-lg text-textPrimary dark:text-textPrimary-dark font-bold"
       >
         {game.info.title}
       </Dialog.Title>
@@ -67,14 +67,14 @@ export const GameModalContent = (props: Props) => {
           cheapestPriceDate?.ageString && `(${cheapestPriceDate.ageString})`
         }`}</span>
       </div>
-      <h3 className="text-lg leading-6 font-semibold text-gray-900 mb-2 mt-4">
+      <h3 className="title-font mt-2 text-lg text-textPrimary dark:text-textPrimary-dark font-bold">
         Current deals:
       </h3>
       <div className="overflow-y-auto h-64">
         {game.deals.map((game) => {
           return (
             <div
-              className="border p-3 mt-2 transition duration-200 ease-in-out hover:bg-gray-100"
+              className="border dark:border-gray-700 p-3 mt-2 transition duration-200 ease-in-out hover:bg-gray-100 dark:hover:bg-gray-700"
               key={game.dealId}
             >
               <div className="grid grid-cols-2 rows-2 justfy-start">

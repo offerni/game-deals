@@ -36,7 +36,7 @@ export const DealModalContent = (props: Props) => {
       <>
         <Dialog.Title
           as="h3"
-          className="text-lg leading-6 font-semibold text-gray-900 mb-4 mt-0"
+          className="title-font font-medium text-lg text-textPrimary dark:text-textPrimary-dark font-bold"
         >
           Deal Details
         </Dialog.Title>
@@ -50,7 +50,7 @@ export const DealModalContent = (props: Props) => {
     <>
       <Dialog.Title
         as="h3"
-        className="text-lg leading-6 font-semibold text-gray-900 mb-4 mt-0"
+        className="title-font font-medium text-lg text-textPrimary dark:text-textPrimary-dark font-bold"
       >
         {deal.gameInfo.name}
       </Dialog.Title>

@@ -55,7 +55,7 @@ const Games = () => {
 
   if (!games.length) {
     return (
-      <div className="grid grid-cols-3 place-items-center">
+      <div className="grid grid-cols-3 place-items-center dark:text-gray-400 mt-3">
         <span className="col-span-3">No Games Found</span>
       </div>
     );

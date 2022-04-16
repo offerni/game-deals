@@ -49,3 +49,12 @@ const calculateReleaseAgeString = (timestamp: number) => {
 
   return "This year";
 };
+
+export const toggleBodyDarkMode = (darkMode = false) => {
+  const body = document.querySelector("body");
+  if (body) {
+    body.className = `min-h-screen ${
+      darkMode ? "dark bg-primary-dark" : "bg-white"
+    }`;
+  }
+};
