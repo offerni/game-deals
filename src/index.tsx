@@ -12,8 +12,18 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-const darkModeFromCache = localStorage.getItem("darkMode") !== "false";
-toggleBodyDarkMode(darkModeFromCache);
+let darkModeFromCache = localStorage.getItem("darkMode");
+
+if (
+  !darkModeFromCache &&
+  window.matchMedia &&
+  window.matchMedia("(prefers-color-scheme: light)").matches
+) {
+  darkModeFromCache = "false";
+  localStorage.setItem("darkMode", darkModeFromCache);
+}
+
+toggleBodyDarkMode(darkModeFromCache !== "false");
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
