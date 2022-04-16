@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 const PageFooter = () => {
   return (
-    <footer className="text-gray-600 body-font bg-primary dark:bg-primary-dark w-full fixed bottom-0 opacity-80 px-5 flex sm:flex-row flex-col sm:gap-2 gap-3 items-center">
-      <a href="/deals">
+    <footer className="text-gray-600 body-font bg-primary dark:bg-primary-dark w-full fixed bottom-0 opacity-80 px-5 flex sm:gap-2 gap-3 items-center">
+      <Link to="/">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -14,7 +16,7 @@ const PageFooter = () => {
         >
           <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
         </svg>
-      </a>
+      </Link>
       <p className="text-sm text-gray-500 dark:text-gray-300 flex-1">
         © {new Date().getFullYear()} Deal Finder
       </p>

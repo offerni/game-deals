@@ -17,7 +17,7 @@ const PageHeader = (props: Props) => {
         <div className="flex gap-2">
           <NavLink
             to={PATHS.deals}
-            className="flex title-font font-medium items-center text-gray-900 gap-2"
+            className="flex title-font font-medium items-center text-gray-900 gap-4"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +26,7 @@ const PageHeader = (props: Props) => {
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
-              className="w-10 h-10 text-white p-2 bg-primary rounded-full text-textPrimary dark:bg-primary-dark"
+              className="w-6 h-6 text-white bg-primary rounded-full text-textPrimary dark:bg-primary-dark"
               viewBox="0 0 24 24"
             >
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
@@ -56,10 +56,10 @@ const PageHeader = (props: Props) => {
             </NavLink>
           </nav>
         </div>
-        <div className="w-1/2">
+        <div className="w-full sm:w-1/2">
           <SearchBar />
         </div>
-        <div className="flex-1">
+        <div className="absolute right-0 sm:flex-1 sm:relative">
           <Toggle
             darkMode={props.darkMode}
             handleDarkMode={props.handleDarkMode}

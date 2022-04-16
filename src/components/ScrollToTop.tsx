@@ -3,7 +3,7 @@ import { scrollToTop } from "utils";
 
 const ScrollToTop = () => {
   return (
-    <div className="fixed top-24 right-2 z-50">
+    <div className="fixed top-40 md:top-32 xl:top-24 right-2 z-50">
       <button
         className="animate-bounce focus:outline-none"
         onClick={scrollToTop}
