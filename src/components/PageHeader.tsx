@@ -13,8 +13,8 @@ const PageHeader = (props: Props) => {
   const location = useLocation();
   return (
     <>
-      <header className="body-font bg-primary dark:bg-primary-dark sticky top-0 z-50">
-        <div className="container flex gap-4 md:gap-2 p-5 flex-col md:flex-row items-center">
+      <header className="body-font bg-primary dark:bg-primary-dark sticky top-0 z-50 flex gap-4 md:gap-2 p-5 flex-col md:flex-row items-center w-full">
+        <div className="flex gap-2">
           <NavLink
             to={PATHS.deals}
             className="flex title-font font-medium items-center text-gray-900 gap-2"
@@ -35,7 +35,7 @@ const PageHeader = (props: Props) => {
               Game Deals
             </span>
           </NavLink>
-          <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex  items-center text-base justify-center">
+          <nav className="px-3 my-2 md:border-l md:border-gray-400	flex items-center text-base justify-center grow-0">
             <NavLink
               to={PATHS.deals}
               className="mr-5 text-textPrimary dark:text-textPrimary-dark hover:text-textPrimary-dark dark:hover:text-textPrimary"
@@ -55,13 +55,15 @@ const PageHeader = (props: Props) => {
               Free Games
             </NavLink>
           </nav>
-          <div className="flex gap-1">
-            <SearchBar />
-            <Toggle
-              darkMode={props.darkMode}
-              handleDarkMode={props.handleDarkMode}
-            />
-          </div>
+        </div>
+        <div className="w-1/2">
+          <SearchBar />
+        </div>
+        <div className="flex-1">
+          <Toggle
+            darkMode={props.darkMode}
+            handleDarkMode={props.handleDarkMode}
+          />
         </div>
       </header>
       {location.pathname !== PATHS.games && <Filters />}

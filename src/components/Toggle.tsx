@@ -5,7 +5,10 @@ type Props = {
 
 const Toggle = (props: Props) => {
   return (
-    <button onClick={props.handleDarkMode} className="focus:outline-none mx-3">
+    <button
+      onClick={props.handleDarkMode}
+      className="focus:outline-none mx-3 float-right"
+    >
       {!props.darkMode ? (
         // Sun
         <svg

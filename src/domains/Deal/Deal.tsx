@@ -48,7 +48,7 @@ const Deal = (props: Props) => {
             {deal.salePrice !== 0 ? `$${deal.salePrice.toFixed(2)}` : "FREE"}
           </h3>
 
-          <h3 className="text-white-700 text-white font-bold rounded-full bg-green-700 w-14 h-8 text-center p-1">
+          <h3 className="text-white-700 text-white font-bold rounded-full bg-green-700 w-16 h-8 text-center p-1">
             -{deal.discountPercentage}%
           </h3>
         </div>
