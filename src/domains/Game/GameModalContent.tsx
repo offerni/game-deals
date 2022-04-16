@@ -112,6 +112,7 @@ export const GameModalContent = (props: Props) => {
           );
         })}
       </div>
+      <p className="mt-3 italic text-xs text-right">*Prices are in USD</p>
     </>
   );
 };

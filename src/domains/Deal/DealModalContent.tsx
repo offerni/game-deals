@@ -72,6 +72,7 @@ export const DealModalContent = (props: Props) => {
           releaseDate?.ageString && `(${releaseDate.ageString})`
         }`}</span>
       </div>
+      <p className="mt-3 italic text-xs text-right">*Prices are in USD</p>
     </>
   );
 };
