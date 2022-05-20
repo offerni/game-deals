@@ -2,7 +2,6 @@ import MoreDetailsButton from "components/MoreDetailsButton";
 import ReactTooltip from "react-tooltip";
 import { IDeal } from "./types";
 import Card from "components/Card";
-import { useLocation } from "react-router-dom";
 import { ClipboardCopyIcon } from "@heroicons/react/outline";
 
 type Props = {
@@ -15,10 +14,9 @@ const Deal = (props: Props) => {
   const metacriticUrl: string | undefined =
     process.env.REACT_APP_METACRITIC_URL;
   const origin = window.location.origin;
-  const { pathname } = useLocation();
 
   const handleCopyClick = (dealId: string) => {
-    navigator.clipboard.writeText(`${origin}${pathname}/${dealId}`);
+    navigator.clipboard.writeText(`${origin}/deals/${dealId}`);
   };
 
   return (
