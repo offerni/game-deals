@@ -2,6 +2,8 @@ import MoreDetailsButton from "components/MoreDetailsButton";
 import ReactTooltip from "react-tooltip";
 import { IDeal } from "./types";
 import Card from "components/Card";
+import { useLocation } from "react-router-dom";
+import { ClipboardCopyIcon } from "@heroicons/react/outline";
 
 type Props = {
   deal: IDeal;
@@ -12,6 +14,12 @@ const Deal = (props: Props) => {
   const imgUrl: string | undefined = process.env.REACT_APP_IMAGE_URL;
   const metacriticUrl: string | undefined =
     process.env.REACT_APP_METACRITIC_URL;
+  const origin = window.location.origin;
+  const { pathname } = useLocation();
+
+  const handleCopyClick = (dealId: string) => {
+    navigator.clipboard.writeText(`${origin}${pathname}/${dealId}`);
+  };
 
   return (
     <>
@@ -39,6 +47,22 @@ const Deal = (props: Props) => {
           >
             {deal.title}
           </a>
+          <button className="inline-flex float-right">
+            <ClipboardCopyIcon
+              className="h-5 w-5 text-gray-400 focus:outline-none"
+              data-for={`copy-${deal.dealId}`}
+              data-tip={"Copied!"}
+              data-place="bottom"
+              data-offset="{'top': 30, 'left': 20}"
+              data-event="click"
+              data-event-off="blur"
+            />
+          </button>
+          <ReactTooltip
+            id={`copy-${deal.dealId}`}
+            effect="float"
+            afterShow={() => handleCopyClick(deal.dealId)}
+          />
         </h2>
         <div className="flex gap-2 items-center justify-center sm:justify-start">
           <h3 className="text-red-500 dark:text-red-700 line-through">
