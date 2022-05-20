@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
 import Deal from "./Deal";
-import { IDeal } from "./types";
-import { builDealsQueryParams, getDeals } from "./utils";
+import { IDeal, IDealParams } from "./types";
+import {
+  builDealsQueryParams,
+  getDealById,
+  getDeals,
+  mapDealGameInfoToGameDeals,
+} from "./utils";
 import InfiniteScroll from "react-infinite-scroll-component";
 import LoadingSpinner from "components/LoadingSpinner";
 import Skeletons from "components/Skeletons";
-import { useLocation } from "react-router";
+import { useLocation, useParams } from "react-router";
 import { PAGE_SIZE, scrollToTop } from "utils";
 import { IDealsLocation } from "types";
 import { useForm } from "react-hook-form";
@@ -17,6 +22,7 @@ const Deals = () => {
   const location: IDealsLocation = useLocation();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const { reset } = useForm();
+  const { id } = useParams<IDealParams>();
 
   useEffect(() => {
     scrollToTop();
@@ -24,15 +30,26 @@ const Deals = () => {
     window.history.replaceState({}, document.title); // reseting
 
     setIsLoading(true);
-    getDeals(builDealsQueryParams(location))
-      .then((response) => {
-        setDeals(response);
+    if (id) {
+      getDealById(id).then((response) => {
+        const responseArray: IDeal[] = [
+          mapDealGameInfoToGameDeals(id, response.gameInfo),
+        ];
+
+        setDeals(responseArray);
         setIsLoading(false);
-      })
-      .catch((err: Error) => {
-        setError(err.message);
       });
-  }, [location, reset]);
+    } else {
+      getDeals(builDealsQueryParams(location))
+        .then((response) => {
+          setDeals(response);
+          setIsLoading(false);
+        })
+        .catch((err: Error) => {
+          setError(err.message);
+        });
+    }
+  }, [location, reset, id]);
 
   if (isLoading && !error) {
     return <Skeletons />;

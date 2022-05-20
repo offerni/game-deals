@@ -30,6 +30,9 @@ const PageContent = () => {
           <Route path={PATHS.recent}>
             <Deals />
           </Route>
+          <Route path={`${PATHS.deals}/:id`}>
+            <Deals />
+          </Route>
           <Route path="/">
             <Deals />
           </Route>

@@ -110,14 +110,13 @@ const convertAPIDealCheapestPrice = (
   };
 };
 
-export const calculateDiscountPercentage = (deal: APIDealsList): number => {
-  const normalPrice: number = parseFloat(deal.normalPrice);
-  const salePrice: number = parseFloat(deal.salePrice);
+export const calculateDiscountPercentage = (deal: IDealGameInfo): number => {
+  const { retailPrice, salePrice } = deal;
   if (salePrice <= 0) {
     return 0;
   }
 
-  return Math.round(((normalPrice - salePrice) / normalPrice) * 100);
+  return Math.round(((retailPrice - salePrice) / retailPrice) * 100);
 };
 
 export const builDealsQueryParams = (
@@ -155,4 +154,31 @@ const getCurrentPage = (dealsSize: number) => {
 
 export const parseImageUrlForBiggerImage = (url: string) => {
   return url.replace("capsule_sm_120", "header");
+};
+
+export const mapDealGameInfoToGameDeals = (
+  id: string,
+  gameInfo: IDealGameInfo
+): IDeal => {
+  return {
+    dealId: id,
+    gameId: gameInfo.gameId,
+    dealRating: gameInfo.steamRatingPercent,
+    steamAppId: gameInfo.steamAppId,
+    steamRatingCount: gameInfo.steamRatingCount,
+    steamRatingPercent: gameInfo.steamRatingPercent,
+    steamRatingText: gameInfo.steamRatingText,
+    discountPercentage: calculateDiscountPercentage(gameInfo),
+    internalName: gameInfo.name,
+    isOnSale: true,
+    lastChange: 0,
+    metacriticLink: gameInfo.metacriticLink,
+    metacriticScore: gameInfo.metacriticScore,
+    normalPrice: gameInfo.retailPrice,
+    salePrice: gameInfo.salePrice,
+    releaseDate: gameInfo.releaseDate,
+    thumb: gameInfo.thumb,
+    title: gameInfo.name,
+    storeInfo: gameInfo.storeInfo,
+  };
 };

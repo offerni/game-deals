@@ -57,3 +57,7 @@ export interface IDealCheapestPrice {
   price: number;
   date: number;
 }
+
+export interface IDealParams {
+  id?: string;
+}
