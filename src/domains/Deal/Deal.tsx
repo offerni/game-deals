@@ -2,7 +2,8 @@ import MoreDetailsButton from "components/MoreDetailsButton";
 import ReactTooltip from "react-tooltip";
 import { IDeal } from "./types";
 import Card from "components/Card";
-import { ClipboardCopyIcon } from "@heroicons/react/outline";
+import { ShareIcon } from "@heroicons/react/outline";
+import { trackClickEvent } from "utils";
 
 type Props = {
   deal: IDeal;
@@ -16,7 +17,24 @@ const Deal = (props: Props) => {
   const origin = window.location.origin;
 
   const handleCopyClick = (dealId: string) => {
+    trackClickEvent("share-unsupported-browser");
     navigator.clipboard.writeText(`${origin}/deals/${dealId}`);
+  };
+
+  const handleShareClick = (deal: IDeal) => {
+    trackClickEvent("share");
+    navigator
+      .share({
+        url: `${origin}/deals/${deal.dealId}`,
+        text: deal.title,
+        title: deal.title,
+      })
+      .then(() => {
+        trackClickEvent("share-successful");
+      })
+      .catch(() => {
+        trackClickEvent("share-failed");
+      });
   };
 
   return (
@@ -37,7 +55,33 @@ const Deal = (props: Props) => {
           </a>
         }
       >
-        <h2 className="title-font font-medium text-lg text-textPrimary dark:text-textPrimary-dark font-bold">
+        <button className="inline-flex float-right absolute right-4 top-4">
+          {!navigator.share ? (
+            // fallback, in case navigator.share is not supported by the browser it copies to the clipboard instead.
+            <>
+              <ShareIcon
+                className="h-5 w-5 text-gray-400 focus:outline-none"
+                data-for={`copy-${deal.dealId}`}
+                data-tip={"Copied!"}
+                data-place="bottom"
+                data-offset="{'top': 30, 'left': 20}"
+                data-event="click"
+                data-event-off="blur"
+              />
+              <ReactTooltip
+                id={`copy-${deal.dealId}`}
+                effect="float"
+                afterShow={() => handleCopyClick(deal.dealId)}
+              />
+            </>
+          ) : (
+            <ShareIcon
+              className="h-5 w-5 text-gray-400 focus:outline-none"
+              onClick={() => handleShareClick(deal)}
+            />
+          )}
+        </button>
+        <h2 className="title-font font-medium text-lg text-textPrimary dark:text-textPrimary-dark font-bold md:mr-5">
           <a
             href={`https://www.cheapshark.com/redirect?dealID=${deal.dealId}`}
             target="_blank"
@@ -45,22 +89,6 @@ const Deal = (props: Props) => {
           >
             {deal.title}
           </a>
-          <button className="inline-flex float-right">
-            <ClipboardCopyIcon
-              className="h-5 w-5 text-gray-400 focus:outline-none"
-              data-for={`copy-${deal.dealId}`}
-              data-tip={"Copied!"}
-              data-place="bottom"
-              data-offset="{'top': 30, 'left': 20}"
-              data-event="click"
-              data-event-off="blur"
-            />
-          </button>
-          <ReactTooltip
-            id={`copy-${deal.dealId}`}
-            effect="float"
-            afterShow={() => handleCopyClick(deal.dealId)}
-          />
         </h2>
         <div className="flex gap-2 items-center justify-center sm:justify-start">
           <h3 className="text-red-500 dark:text-red-700 line-through">

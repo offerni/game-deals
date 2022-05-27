@@ -10,7 +10,7 @@ const cssTransition = `
 const Card = (props: Props) => {
   return (
     <div
-      className={`h-full p-4 border-2 border-gray-100 dark:border-gray-700 rounded-lg w-full ${cssTransition} flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left gap-6`}
+      className={`h-full relative p-4 border-2 border-gray-100 dark:border-gray-700 rounded-lg w-full ${cssTransition} flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left gap-6`}
     >
       <div className="rounded-lg w-52 h-52 flex items-center border-2 border-gray dark:border-gray-400">
         {props.logo}
